@@ -8,11 +8,9 @@
     x:Class="dsr_betalling.MainPage"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1280" Height="720">
-
         <StackPanel x:Name="TextBoxStack" Orientation="Vertical" Width="427" Height="255" Canvas.Left="427" Canvas.Top="358" Margin="426.6,315,426,150">
             <TextBox x:Name="UsernameTextBox" TextWrapping="Wrap" Text="" Height="71" d:LayoutOverrides="Height, LeftMargin, RightMargin, LeftPosition, RightPosition" RenderTransformOrigin="0.526,-1.437" Width="426.6" PlaceholderText="Username" FontSize="36"/>
             <PasswordBox x:Name="passwordBox" Width="426.6" Height="71" PlaceholderText="Password" Margin="0,10,0,0" FontSize="36" />
-            <!--<TextBox x:Name="PasswordTextBox" Margin="0,10,0,0" TextWrapping="Wrap" Text="" Height="71" RenderTransformOrigin="0.526,-1.437" Width="426.6" d:LayoutOverrides="Height, LeftPosition, RightPosition" PlaceholderText="Password"/>-->
             <Button x:Name="LogInButton" Content="Log in" VerticalAlignment="Stretch" Width="200" Height="50" Margin="0,50,0,0" HorizontalAlignment="Stretch">
                 <!--<Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="Click">
@@ -22,13 +20,5 @@
             </Button>
         </StackPanel>
         <Image x:Name="image" Height="150" Margin="0,100,0,0" VerticalAlignment="Top" Width="800" Source="ms-appx:///Assets/zealand.jpg"/>
-        <!--<Rectangle Height="200" Stroke="Black" d:LayoutOverrides="VerticalAlignment, Width, Height, LeftMargin, RightMargin" Width="800" Canvas.Left="240" Canvas.Top="135">-->
-        <!--<Rectangle.Fill>
-                    <ImageBrush Stretch="Fill" ImageSource="ms-appx:///Assets/zealand.jpg"/>
-                </Rectangle.Fill>
-            </Rectangle>-->
-
-        <!--<Image x:Height="200" Stroke="Black" d:LayoutOverrides="VerticalAlignment, LeftMargin, RightMargin" Width="800" Canvas.Left="240" Canvas.Top="135"/>-->
-
     </Grid>
 </Page>
