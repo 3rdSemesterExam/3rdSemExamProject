@@ -5,9 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    x:Class="dsr_betalling.MainPage"
+    x:Class="dsr_betalling.LoginPage"
     mc:Ignorable="d">
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1280" Height="720">
 
         <StackPanel x:Name="TextBoxStack" Orientation="Vertical" Width="427" Height="255" Canvas.Left="427" Canvas.Top="358" Margin="426.6,315,426,150">

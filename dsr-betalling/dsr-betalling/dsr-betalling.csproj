@@ -105,11 +105,14 @@
     <Compile Include="model\Purchase.cs" />
     <Compile Include="model\PurchaseItems.cs" />
     <Compile Include="model\User.cs" />
-    <Compile Include="view\AddGuest.xaml.cs">
-      <DependentUpon>AddGuest.xaml</DependentUpon>
+    <Compile Include="view\AccountManager.xaml.cs">
+      <DependentUpon>AccountManager.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="view\AddAccount.xaml.cs">
+      <DependentUpon>AddAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\Sale.xaml.cs">
@@ -123,6 +126,7 @@
     <None Include="dsr-betalling_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\EASJ_logo.png" />
     <Content Include="Assets\zealand.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -138,11 +142,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="view\AddGuest.xaml">
+    <Page Include="view\AccountManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\MainPage.xaml">
+    <Page Include="view\AddAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\LoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
