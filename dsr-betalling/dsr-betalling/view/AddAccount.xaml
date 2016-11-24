@@ -5,7 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
-    x:Class="dsr_betalling.view.AddGuest"
+    x:Class="dsr_betalling.view.EditAccount"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -13,7 +13,7 @@
             <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" Width="320" FontSize="36" Padding="0" Background="#33000000">
 
             </Button>
-            <Button x:Name="AddGuestButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Height="100" Width="320" Content="Add Account" FontSize="36" Padding="0">
+            <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Height="100" Width="320" Content="Account Manager" FontSize="36" Padding="0">
 
             </Button>
             <Button x:Name="DSRMenuButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Width="320" Height="100" FontSize="36" Content="" Padding="0"/>

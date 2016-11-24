@@ -33,10 +33,10 @@
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>-->
             </Button>
-            <Button x:Name="AddGuestButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100" Width="320" Content="Add Guest" FontSize="36" Padding="0">
+            <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100" Width="320" Content="Add Guest" FontSize="36" Padding="0">
                 <!--<Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="Click">
-                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.AddGuest"/>
+                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.AccountManager"/>
                     </Core:EventTriggerBehavior>
                 </Interactivity:Interaction.Behaviors>-->
             </Button>

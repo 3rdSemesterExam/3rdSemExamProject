@@ -20,11 +20,11 @@ namespace dsr_betalling.view
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddGuest : Page
+    public sealed partial class AddAccount : Page
     {
-        public AddGuest()
+        public AddAccount()
         {
-            this.InitializeComponent();
+           // this.InitializeComponent();
         }
     }
 }
