@@ -111,8 +111,8 @@
     <Compile Include="view\AddAccount.xaml.cs">
       <DependentUpon>AddAccount.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
+    <Compile Include="view\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="view\Sale.xaml.cs">
@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\LoginPage.xaml">
+    <Page Include="view\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
