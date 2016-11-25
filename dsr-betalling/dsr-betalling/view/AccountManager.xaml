@@ -9,6 +9,33 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel x:Name="TopAppStack" Height="100" Margin="0,0,0,620" Orientation="Horizontal" Width="1280">
+            <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" Width="320" FontSize="36" Padding="0" Background="#33000000">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.Sale"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+
+            </Button>
+            <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Height="100" Width="320" Content="AccountManager" FontSize="36" Padding="0">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.AccountManager"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+
+            </Button>
+            <Button x:Name="UnassigneedButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Width="320" Height="100" FontSize="36" Content="" Padding="0"/>
+            <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="320" Height="100" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:NavigateToPageAction TargetPage="dsr_betalling.MainPage"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </Button>
+        </StackPanel>
+
         <ListView x:Name="AccountListView" Margin="0,105,0,0" Header="Registered Accounts" Width="360" FontSize="22" d:LayoutOverrides="Width" Height="525">
             <ListView.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -17,12 +44,6 @@
                 </LinearGradientBrush>
             </ListView.Background>
         </ListView>
-        <StackPanel x:Name="TopAppStack" Height="100" Margin="0,0,0,622" Orientation="Horizontal" Width="1280">
-            <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" Width="320" FontSize="36" Padding="0" Background="#33000000"/>
-            <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Height="100" Width="320" Content="Account Manager" FontSize="36" Padding="0"/>
-            <Button x:Name="DSRMenuButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Width="320" Height="100" FontSize="36" Content="" Padding="0"/>
-            <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="320" Height="100" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0"/>
-        </StackPanel>
         <StackPanel x:Name="SelectorStack" Margin="0,0,980,0" Orientation="Vertical" Width="200" d:LayoutOverrides="TopPosition, BottomPosition" Height="275">
             <Button x:Name="AddAccountButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36"/>
             <Button x:Name="DeleteAccountButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,25,0,0"/>
