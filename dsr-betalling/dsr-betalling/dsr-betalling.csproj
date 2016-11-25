@@ -96,7 +96,18 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="common\access.cs" />
-    <Compile Include="common\databasehelper.cs" />
+    <Compile Include="common\facade.cs" />
+    <Compile Include="common\NavigationHelper.cs" />
+    <Compile Include="common\RelayCommand.cs" />
+    <Compile Include="exception\HttpErrorException.cs" />
+    <Compile Include="exception\ListEmptyException.cs" />
+    <Compile Include="exception\ServerErrorException.cs" />
+    <Compile Include="handler\AccountHandler.cs" />
+    <Compile Include="handler\ExceptionHandler.cs" />
+    <Compile Include="handler\ProductHandler.cs" />
+    <Compile Include="handler\PurchaseHandler.cs" />
+    <Compile Include="interface\IGetById.cs" />
+    <Compile Include="interface\IWebUri.cs" />
     <Compile Include="model\Account.cs" />
     <Compile Include="model\Activity.cs" />
     <Compile Include="model\ActivityLog.cs" />
@@ -138,6 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="viewmodel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
