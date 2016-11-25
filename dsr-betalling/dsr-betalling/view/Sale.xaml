@@ -20,32 +20,22 @@
     </Page.TopAppBar>-->
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel x:Name="TopAppStack" Height="100" Margin="0,0,0,620" Orientation="Horizontal" Width="1280">
-            <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="100" Width="320" FontSize="36" Padding="0" Background="#33000000">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.Sale"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-
-            </Button>
-            <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Height="100" Width="320" Content="AccountManager" FontSize="36" Padding="0">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:NavigateToPageAction TargetPage="dsr_betalling.view.AccountManager"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-
-            </Button>
-            <Button x:Name="UnassigneedButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Width="320" Height="100" FontSize="36" Content="" Padding="0"/>
-            <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="320" Height="100" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:NavigateToPageAction TargetPage="dsr_betalling.MainPage"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </Button>
-        </StackPanel>
+        <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="426*"/>
+                <ColumnDefinition Width="426*"/>
+                <ColumnDefinition Width="426*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Column="0" Margin="0">
+                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0">
+                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="AccountManager" FontSize="36" Padding="0" Margin="0" Height="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="2" Margin="0" >
+                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100"/>
+            </StackPanel>
+        </Grid>
 
         <ListView x:Name="listView" Margin="0,105,870,0" Width="310" d:LayoutOverrides="TopPosition, BottomPosition" Background="#FFB62F2F" Height="525"/>
         <StackPanel x:Name="ControlStack" Margin="710,465,0,0" Orientation="Vertical" Width="200" Height="175">
