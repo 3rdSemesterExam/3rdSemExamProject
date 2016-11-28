@@ -4,12 +4,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using dsr_betalling.exception;
- 
+
 using dsr_betalling.@interface;
 
 namespace dsr_betalling.common
 {
-    public class facade
+    public static class facade
     {
         private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
         // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
@@ -32,14 +32,16 @@ namespace dsr_betalling.common
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
                     var listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
                     return listOfObjects;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new ServerErrorException("Server Fejl\n"+ ex.Message);
+                    throw;
                 }
             }
         }
@@ -63,44 +65,16 @@ namespace dsr_betalling.common
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/" + id);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
                     result = response.Content.ReadAsAsync<T>().Result;
                     return result;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="statueId"></param>
-        /// <returns></returns>
-        public static async Task<IEnumerable<T>> GetByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetById, new()
-        {
-            var handler = new HttpClientHandler { UseDefaultCredentials = true };
-            using (var client = new HttpClient(handler))
-            {
-                client.BaseAddress = new Uri(ServerUrl);
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                try
-                {
-                    var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                    var listOfObjects = response.Content.ReadAsAsync<IEnumerable<T>>().Result;
-                    return listOfObjects;
-                }
-                catch (Exception ex)
-                {
-                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                    throw;
                 }
             }
         }
@@ -111,7 +85,7 @@ namespace dsr_betalling.common
         /// <typeparam name="T">Objekt Type</typeparam>
         /// <param name="obj">Objekt som skal sendes</param>
         /// <returns></returns>
-        public static async Task<string> PostAsync<T>(T obj) where T : IWebUri
+        public static async Task<bool> PostAsync<T>(T obj) where T : IWebUri
         {
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
@@ -122,13 +96,15 @@ namespace dsr_betalling.common
                 try
                 {
                     var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, obj);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                    return "Success: " + obj.VerboseName + " Oprettet";
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
+                    return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                    throw;
                 }
             }
         }
@@ -140,7 +116,7 @@ namespace dsr_betalling.common
         /// <param name="obj"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async Task<string> PutAsync<T>(T obj, int id) where T : IWebUri
+        public static async Task<bool> PutAsync<T>(T obj, int id) where T : IWebUri
         {
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
@@ -151,13 +127,15 @@ namespace dsr_betalling.common
                 try
                 {
                     var response = await client.PutAsJsonAsync(ApiBaseUrl + obj.ResourceUri + "/" + id, obj);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                    return "Success: " + obj.VerboseName + " Opdateret";
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
+                    return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                    throw;
                 }
             }
         }
@@ -169,7 +147,7 @@ namespace dsr_betalling.common
         /// <param name="obj"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static async Task<string> DeleteAsync<T>(T obj, int id) where T : IWebUri
+        public static async Task<bool> DeleteAsync<T>(T obj, int id) where T : IWebUri
         {
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
@@ -180,43 +158,16 @@ namespace dsr_betalling.common
                 try
                 {
                     var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/" + id);
-                    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                    return "Success: " + obj.VerboseName + " Slettet";
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
+                    return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    throw new ServerErrorException("Server Fejl\n" + ex.Message);
+                    throw;
                 }
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <param name="statueId"></param>
-        /// <returns></returns>
-        public static async Task DeleteByStatueIdAsync<T>(T obj, int statueId) where T : IWebUri, IGetById
-        {
-            var handler = new HttpClientHandler { UseDefaultCredentials = true };
-            using (var client = new HttpClient(handler))
-            {
-                client.BaseAddress = new Uri(ServerUrl);
-                client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
-                //try
-                //{
-                //    var response = await client.DeleteAsync(ApiBaseUrl + obj.ResourceUri + "/ByStatueId/" + statueId);
-                //    if (!response.IsSuccessStatusCode) // Hvis der er fejl, så smid Exception, ellers fortsæt
-                //        throw new HttpErrorException("HTTP Fejl\n" + obj.VerboseName + ": " + response.ReasonPhrase);
-                //}
-                //catch (Exception ex)
-                //{
-                //    throw new ServerErrorException("Server Fejl\n" + ex.Message);
-                //}
             }
         }
     }

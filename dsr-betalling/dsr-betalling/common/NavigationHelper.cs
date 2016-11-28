@@ -21,7 +21,7 @@ namespace dsr_betalling.common
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowExceptionError(ex.Message);
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
     }

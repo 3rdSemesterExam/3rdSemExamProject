@@ -95,28 +95,29 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="common\access.cs" />
-    <Compile Include="common\facade.cs" />
-    <Compile Include="common\NavigationHelper.cs" />
-    <Compile Include="common\RelayCommand.cs" />
-    <Compile Include="exception\HttpErrorException.cs" />
-    <Compile Include="exception\ListEmptyException.cs" />
-    <Compile Include="exception\ServerErrorException.cs" />
-    <Compile Include="handler\AccountHandler.cs" />
-    <Compile Include="handler\ExceptionHandler.cs" />
-    <Compile Include="handler\ProductHandler.cs" />
-    <Compile Include="handler\PurchaseHandler.cs" />
-    <Compile Include="interface\IGetById.cs" />
-    <Compile Include="interface\IWebUri.cs" />
-    <Compile Include="model\Account.cs" />
-    <Compile Include="model\Activity.cs" />
-    <Compile Include="model\ActivityLog.cs" />
-    <Compile Include="model\Chip.cs" />
-    <Compile Include="model\Product.cs" />
-    <Compile Include="model\Purchase.cs" />
-    <Compile Include="model\PurchaseItems.cs" />
-    <Compile Include="model\User.cs" />
-    <Compile Include="view\MainPage.xaml.cs">
+    <Compile Include="Common\access.cs" />
+    <Compile Include="Common\facade.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Exception\HttpErrorException.cs" />
+    <Compile Include="Exception\ListEmptyException.cs" />
+    <Compile Include="Exception\ServerErrorException.cs" />
+    <Compile Include="Handler\AccountHandler.cs" />
+    <Compile Include="Handler\ChipHandler.cs" />
+    <Compile Include="Handler\ExceptionHandler.cs" />
+    <Compile Include="Handler\ProductHandler.cs" />
+    <Compile Include="Handler\PurchaseHandler.cs" />
+    <Compile Include="Interface\IGetById.cs" />
+    <Compile Include="Interface\IWebUri.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\ActivityLog.cs" />
+    <Compile Include="Model\Chip.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Model\PurchaseItems.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,13 +143,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="view\MainPage.xaml">
+    <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="viewmodel\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">

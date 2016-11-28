@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dsr_betalling.common
+namespace dsr_betalling.handler
 {
-    class databasehelper
+    class ProductHandler
     {
     }
 }
