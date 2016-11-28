@@ -48,7 +48,7 @@
                 <StackPanel x:Name="SubtotalStack" Orientation="Horizontal" Height="50" d:LayoutOverrides="HorizontalAlignment">
 
                     <TextBlock x:Name="SalesPriceBlock" Margin="0" TextWrapping="Wrap" Text="Sub Total" Height="50" Width="200"/>
-                    <TextBox x:Name="SalesPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
+                    <TextBox x:Name="SalesPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
 
                 </StackPanel>
                 <StackPanel x:Name="DiscountStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
@@ -60,7 +60,7 @@
                 <StackPanel x:Name="TotalStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
 
                     <TextBlock x:Name="SalesPriceBlock2" Margin="0" TextWrapping="Wrap" Text="Total" Height="50" Width="200"/>
-                    <TextBox x:Name="SalesPriceBox2" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
+                    <TextBox x:Name="SalesPriceBox2" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
 
                 </StackPanel>
                 <StackPanel x:Name="ConfirmChipStack" Width="400" Margin="0,102,0,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height, LeftPosition, RightPosition" Orientation="Horizontal" Height="42">
@@ -69,7 +69,8 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="ButtonlStack" Orientation="Vertical" Width="200" Height="175" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height" Margin="100,0">
-                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm"/>
+                <Button x:Name="PurchaseButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Purchase" Visibility="Visible" Click="PurchaseButton_Click"/>
+                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click"/>
                 <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36"/>
             </StackPanel>
         </StackPanel>

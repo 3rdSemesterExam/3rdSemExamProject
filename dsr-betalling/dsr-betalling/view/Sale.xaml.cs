@@ -26,5 +26,17 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
+
+        private void PurchaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            PurchaseButton.Visibility = Visibility.Collapsed;
+            ConfirmButton.Visibility = Visibility.Visible;
+        }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            PurchaseButton.Visibility = Visibility.Visible;
+            ConfirmButton.Visibility = Visibility.Collapsed;
+        }
     }
 }
