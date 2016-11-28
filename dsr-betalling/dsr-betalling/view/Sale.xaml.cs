@@ -32,7 +32,8 @@ namespace dsr_betalling.view
             PurchaseButton.Visibility = Visibility.Collapsed;
             ConfirmButton.Visibility = Visibility.Visible;
             ProductListView.IsEnabled = false;
-            
+            OrderedListView.IsEnabled = false;
+            DiscountBox.IsEnabled = false;
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,8 @@ namespace dsr_betalling.view
             PurchaseButton.Visibility = Visibility.Visible;
             ConfirmButton.Visibility = Visibility.Collapsed;
             ProductListView.IsEnabled = true;
+            OrderedListView.IsEnabled = true;
+            DiscountBox.IsEnabled = true;
         }
     }
 }

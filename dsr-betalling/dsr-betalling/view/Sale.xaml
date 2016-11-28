@@ -39,7 +39,9 @@
         </Grid>
 
         <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="0,105,860,0" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="ProductListView" Width="310" Background="#FFB62F2F" Height="525" Margin="0"/>
+            <ListView x:Name="ProductListView" Width="310" Background="#FFB62F2F" Height="525" Margin="0">
+                <ListViewItem Content="ListViewItem"/>
+            </ListView>
         </StackPanel>
         <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="0,105,0,0" Orientation="Vertical" Width="320" Height="525">
             <ListView x:Name="OrderedListView" Width="310" Background="#FFB62F2F" Height="525" Margin="0"/>
@@ -54,14 +56,14 @@
                 </StackPanel>
                 <StackPanel x:Name="DiscountStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
 
-                    <TextBlock x:Name="SalesPriceBlock1" Margin="0" TextWrapping="Wrap" Text="Discount" Height="50" Width="200"/>
-                    <TextBox x:Name="SalesPriceBox1" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="2" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
+                    <TextBlock x:Name="DiscountBlock" Margin="0" TextWrapping="Wrap" Text="Discount" Height="50" Width="200"/>
+                    <TextBox x:Name="DiscountBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="2" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
 
                 </StackPanel>
                 <StackPanel x:Name="TotalStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
 
-                    <TextBlock x:Name="SalesPriceBlock2" Margin="0" TextWrapping="Wrap" Text="Total" Height="50" Width="200"/>
-                    <TextBox x:Name="SalesPriceBox2" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
+                    <TextBlock x:Name="TotalPriceBlock" Margin="0" TextWrapping="Wrap" Text="Total" Height="50" Width="200"/>
+                    <TextBox x:Name="TotalPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
 
                 </StackPanel>
                 <StackPanel x:Name="ConfirmChipStack" Width="400" Margin="0,102,0,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height, LeftPosition, RightPosition" Orientation="Horizontal" Height="42">
