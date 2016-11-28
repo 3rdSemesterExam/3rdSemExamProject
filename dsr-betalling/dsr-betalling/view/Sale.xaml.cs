@@ -31,12 +31,15 @@ namespace dsr_betalling.view
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
             ConfirmButton.Visibility = Visibility.Visible;
+            ProductListView.IsEnabled = false;
+            
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Visible;
             ConfirmButton.Visibility = Visibility.Collapsed;
+            ProductListView.IsEnabled = true;
         }
     }
 }

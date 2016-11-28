@@ -20,6 +20,7 @@
     </Page.TopAppBar>-->
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
         <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="426*"/>
