@@ -44,5 +44,18 @@ namespace dsr_betalling.view
             OrderedListView.IsEnabled = true;
             DiscountBox.IsEnabled = true;
         }
+
+        private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            foreach (ListViewItem item in ProductListView.SelectedItems)
+            {
+                OrderedListView.Items?.Add(item.ToString());
+            }
+        }
+
+        private void OrderedListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+                OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
+        }
     }
 }
