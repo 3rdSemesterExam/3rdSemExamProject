@@ -30,7 +30,6 @@ namespace dsr_betalling.view
             this.InitializeComponent();
         }
 
-
         private void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -67,7 +66,21 @@ namespace dsr_betalling.view
         {
             OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
         }
-        
-      
+
+        private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (PurchaseButton.Visibility == Visibility.Collapsed)
+            {
+                PurchaseButton.Visibility = Visibility.Visible;
+                ConfirmButton.Visibility = Visibility.Collapsed;
+                ProductListView.IsEnabled = true;
+                OrderedListView.IsEnabled = true;
+                DiscountBox.IsEnabled = true;
+            }
+            else
+            {
+                OrderedListView.Items?.Clear();
+            }
+        }
     }
 }
