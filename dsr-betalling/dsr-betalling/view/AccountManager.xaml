@@ -20,7 +20,7 @@
                 <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100"/>
             </StackPanel>
             <StackPanel x:Name="AccountManagerStack" Orientation="Vertical" Grid.Column="1" Margin="0">
-                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100"/>
+                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100" Click="AccountManagerButton_Click"/>
             </StackPanel>
             <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0" >
                 <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100"/>
@@ -29,9 +29,9 @@
 
         <ListView x:Name="AccountListView" Margin="0,105,0,0" Header="Registered Accounts" Width="360" FontSize="22" d:LayoutOverrides="Width" Height="525" Background="#33000000"/>
         <StackPanel x:Name="SelectorStack" Margin="0,0,980,0" Orientation="Vertical" Width="200" d:LayoutOverrides="TopPosition, BottomPosition" Height="275">
-            <Button x:Name="AddAccountButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36"/>
+            <Button x:Name="AddAccountButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Click="AddAccountButton_Click"/>
             <Button x:Name="DeleteAccountButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,25,0,0" Click="DeleteAccountButton_Click"/>
-            <Button x:Name="EditAccountButton" Content="Edit" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,25,0,0"/>
+            <Button x:Name="EditAccountButton" Content="Edit" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" d:LayoutOverrides="LeftPosition, RightPosition" Margin="0,25,0,0" Click="EditAccountButton_Click"/>
         </StackPanel>
 
     </Grid>

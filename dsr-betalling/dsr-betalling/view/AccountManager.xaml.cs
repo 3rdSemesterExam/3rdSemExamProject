@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
+using dsr_betalling.common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,6 +33,21 @@ namespace dsr_betalling.view
         {
             var dialog = new MessageDialog("Account deleted!");
             await dialog.ShowAsync();
+        }
+
+        private void AddAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AddAccount));
+        }
+
+        private void EditAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(EditAccount));
+        }
+
+        private void AccountManagerButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AccountManager));
         }
     }
 }

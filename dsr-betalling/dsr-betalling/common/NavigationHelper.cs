@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using dsr_betalling.handler;
+//using dsr_betalling.handler;
 
 namespace dsr_betalling.common
 {
@@ -21,7 +21,8 @@ namespace dsr_betalling.common
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
+                throw new Exception();
+                //ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
     }
