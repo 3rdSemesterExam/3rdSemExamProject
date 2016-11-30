@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
+using dsr_betalling.common;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -29,7 +30,7 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-        // NavigationHelper.navigate(typeof(SeeStatue));
+      
         private async void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -80,6 +81,16 @@ namespace dsr_betalling.view
             {
                 OrderedListView.Items?.Clear();
             }
+        }
+
+        private void AccountManagerButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AccountManager));
+        }
+
+        private void SalesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(Sale));
         }
     }
 }
