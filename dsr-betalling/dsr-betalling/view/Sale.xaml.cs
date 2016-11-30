@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -26,7 +27,7 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-
+        
         private void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -34,6 +35,8 @@ namespace dsr_betalling.view
             ProductListView.IsEnabled = false;
             OrderedListView.IsEnabled = false;
             DiscountBox.IsEnabled = false;
+            ConfirmChipBox.Focus(FocusState.Keyboard);
+            
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
