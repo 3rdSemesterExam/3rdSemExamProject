@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
+using dsr_betalling.common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,7 +26,7 @@ namespace dsr_betalling.view
     {
         public AddAccount()
         {
-           this.InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void AddChipButton_Click(object sender, RoutedEventArgs e)
@@ -44,6 +45,22 @@ namespace dsr_betalling.view
         {
             var dialog = new MessageDialog("Congratulations! A new Account has been registered");
             await dialog.ShowAsync();
+            NavigationHelper.navigate(typeof(Sale));
+        }
+
+        private void SalesButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(Sale));
+        }
+
+        private void AccountManagerButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AccountManager));
+        }
+
+        private void LogOutButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(MainPage));
         }
     }
 }
