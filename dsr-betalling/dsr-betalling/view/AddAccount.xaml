@@ -33,14 +33,7 @@
 
         </StackPanel>
         <StackPanel x:Name="ChipStack" Margin="0,105,0,0" Orientation="Vertical" Height="525" Width="360" d:LayoutOverrides="TopPosition, BottomPosition">
-            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition">
-                <ListView.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF18474B" Offset="1"/>
-                        <GradientStop Color="#FF977575"/>
-                    </LinearGradientBrush>
-                </ListView.Background>
-            </ListView>
+            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000"/>
             <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0"/>
             <Button x:Name="DeleteChipButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" Margin="0,26,0,0" FontSize="36"/>
         </StackPanel>
