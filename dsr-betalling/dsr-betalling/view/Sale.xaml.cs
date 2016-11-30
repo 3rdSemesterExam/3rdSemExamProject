@@ -47,7 +47,7 @@ namespace dsr_betalling.view
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            foreach (ListViewItem item in ProductListView.SelectedItems)
+            foreach (var item in ProductListView.SelectedItems)
             {
                 OrderedListView.Items?.Add(item.ToString());
             }
@@ -55,7 +55,7 @@ namespace dsr_betalling.view
 
         private void OrderedListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-                OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
+            OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
         }
     }
 }
