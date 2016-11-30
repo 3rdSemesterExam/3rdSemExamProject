@@ -49,5 +49,10 @@ namespace dsr_betalling.view
         {
             NavigationHelper.navigate(typeof(AccountManager));
         }
+
+        private void SalesButton_Onclick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(Sale));
+        }
     }
 }
