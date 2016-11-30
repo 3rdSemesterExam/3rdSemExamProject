@@ -20,6 +20,7 @@ namespace dsr_betalling.ViewModel
         }
 
 
+
         #region PropertyChangedSupport
 
         

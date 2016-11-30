@@ -70,7 +70,9 @@
                 <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click"/>
                 <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_OnClick"/>
             </StackPanel>
-        </StackPanel>
-
-    </Grid>
+        </StackPanel> 
+        <!-- WON'T WORK UNTIL ASYNC METHOD HAS BEEN ADDED
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
+        -->
+        </Grid>
 </Page>
