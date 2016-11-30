@@ -27,7 +27,7 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-        
+
         private void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -36,7 +36,6 @@ namespace dsr_betalling.view
             OrderedListView.IsEnabled = false;
             DiscountBox.IsEnabled = false;
             ConfirmChipBox.Focus(FocusState.Keyboard);
-            
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -46,6 +45,7 @@ namespace dsr_betalling.view
             ProductListView.IsEnabled = true;
             OrderedListView.IsEnabled = true;
             DiscountBox.IsEnabled = true;
+            OrderedListView.Items?.Clear();
         }
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
@@ -59,6 +59,22 @@ namespace dsr_betalling.view
         private void OrderedListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
+        }
+
+        private void CancelButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (PurchaseButton.Visibility == Visibility.Collapsed)
+            {
+                PurchaseButton.Visibility = Visibility.Visible;
+                ConfirmButton.Visibility = Visibility.Collapsed;
+                ProductListView.IsEnabled = true;
+                OrderedListView.IsEnabled = true;
+                DiscountBox.IsEnabled = true;
+            }
+            else
+            {
+                OrderedListView.Items?.Clear();
+            }
         }
     }
 }
