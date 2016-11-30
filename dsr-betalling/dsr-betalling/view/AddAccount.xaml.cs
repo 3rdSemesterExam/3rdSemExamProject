@@ -25,7 +25,7 @@ namespace dsr_betalling.view
     {
         public AddAccount()
         {
-           // this.InitializeComponent();
+           this.InitializeComponent();
         }
 
         private void AddChipButton_Click(object sender, RoutedEventArgs e)

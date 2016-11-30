@@ -25,7 +25,7 @@ namespace dsr_betalling.view
     {
         public AccountManager()
         {
-            //this.InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
