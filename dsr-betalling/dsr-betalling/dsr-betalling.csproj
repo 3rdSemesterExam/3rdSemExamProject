@@ -105,6 +105,7 @@
     <Compile Include="model\Purchase.cs" />
     <Compile Include="model\PurchaseItems.cs" />
     <Compile Include="model\User.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="viewmodel\vmAccess.cs" />
     <Compile Include="viewmodel\vmAccount.cs" />
     <Compile Include="viewmodel\vmSale.cs" />
