@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="common\access.cs" />
     <Compile Include="common\databasehelper.cs" />
+    <Compile Include="common\NavigationHelper.cs" />
     <Compile Include="model\Account.cs" />
     <Compile Include="model\Activity.cs" />
     <Compile Include="model\ActivityLog.cs" />

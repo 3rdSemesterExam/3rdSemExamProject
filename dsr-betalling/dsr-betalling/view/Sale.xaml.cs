@@ -29,7 +29,7 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-
+        // NavigationHelper.navigate(typeof(SeeStatue));
         private async void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
