@@ -28,10 +28,10 @@ namespace dsr_betalling.view
             this.InitializeComponent();
         }
 
-        private void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new MessageDialog("Account deleted!");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
     }
 }

@@ -27,22 +27,22 @@ namespace dsr_betalling.view
             this.InitializeComponent();
         }
 
-        private void AddChipButton_Click(object sender, RoutedEventArgs e)
+        private async void AddChipButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new MessageDialog("Chip added!");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
 
-        private void DeleteChipButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteChipButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new MessageDialog("Chip deleted!");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
 
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new MessageDialog("Changes have been saved!");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
     }
 }

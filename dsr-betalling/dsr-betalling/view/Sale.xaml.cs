@@ -30,7 +30,7 @@ namespace dsr_betalling.view
             this.InitializeComponent();
         }
 
-        private void PurchaseButton_Click(object sender, RoutedEventArgs e)
+        private async void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
             ConfirmButton.Visibility = Visibility.Visible;
@@ -39,11 +39,10 @@ namespace dsr_betalling.view
             DiscountBox.IsEnabled = false;
             ConfirmChipBox.Focus(FocusState.Keyboard);
             var dialog = new MessageDialog("Awaiting NFC scan");
-            dialog.ShowAsync();
-
+            await dialog.ShowAsync();
         }
 
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Visible;
             ConfirmButton.Visibility = Visibility.Collapsed;
@@ -51,7 +50,7 @@ namespace dsr_betalling.view
             OrderedListView.IsEnabled = true;
             DiscountBox.IsEnabled = true;
             var dialog = new MessageDialog("Purchase completed");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
