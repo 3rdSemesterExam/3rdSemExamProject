@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +26,24 @@ namespace dsr_betalling.view
         public AddAccount()
         {
            // this.InitializeComponent();
+        }
+
+        private void AddChipButton_Click(object sender, RoutedEventArgs e)
+        {
+            //var dialog = new MessageDialog("Chip Added");
+            //dialog.ShowAsync();
+        }
+
+        private void DeleteChipButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Chip deleted");
+            dialog.ShowAsync();
+        }
+
+        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Congratulations! A new Account has been registered");
+            dialog.ShowAsync();
         }
     }
 }
