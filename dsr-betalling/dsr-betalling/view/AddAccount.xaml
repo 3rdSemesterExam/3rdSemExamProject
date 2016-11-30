@@ -17,13 +17,25 @@
                 <ColumnDefinition Width="426*"/>
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="SalesStack" Orientation="Vertical" Grid.Column="0" Margin="0">
-                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100"/>
+                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Click">
+                            <Core:NavigateToPageAction TargetPage="dsr_betalling.view.Sale"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </Button>
             </StackPanel>
             <StackPanel x:Name="AccountManagerStack" Orientation="Vertical" Grid.Column="1" Margin="0">
                 <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100"/>
             </StackPanel>
             <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0" >
-                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100"/>
+                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100">
+                    <Interactivity:Interaction.Behaviors>
+                        <Core:EventTriggerBehavior EventName="Click">
+                            <Core:NavigateToPageAction TargetPage="dsr_betalling.MainPage"/>
+                        </Core:EventTriggerBehavior>
+                    </Interactivity:Interaction.Behaviors>
+                </Button>
             </StackPanel>
         </Grid>
 
