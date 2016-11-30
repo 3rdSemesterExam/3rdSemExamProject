@@ -51,7 +51,8 @@ namespace dsr_betalling.view
             ProductListView.IsEnabled = true;
             OrderedListView.IsEnabled = true;
             DiscountBox.IsEnabled = true;
-          
+            var dialog = new MessageDialog("Purchase completed");
+            dialog.ShowAsync();
         }
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
