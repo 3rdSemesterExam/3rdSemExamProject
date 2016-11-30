@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
+
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -27,7 +29,8 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-        
+
+
         private void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -36,7 +39,9 @@ namespace dsr_betalling.view
             OrderedListView.IsEnabled = false;
             DiscountBox.IsEnabled = false;
             ConfirmChipBox.Focus(FocusState.Keyboard);
-            
+            var dialog = new MessageDialog("Awaiting NFC scan");
+            dialog.ShowAsync();
+
         }
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
@@ -46,6 +51,7 @@ namespace dsr_betalling.view
             ProductListView.IsEnabled = true;
             OrderedListView.IsEnabled = true;
             DiscountBox.IsEnabled = true;
+          
         }
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
@@ -60,5 +66,7 @@ namespace dsr_betalling.view
         {
             OrderedListView.Items?.RemoveAt(OrderedListView.SelectedIndex);
         }
+        
+      
     }
 }

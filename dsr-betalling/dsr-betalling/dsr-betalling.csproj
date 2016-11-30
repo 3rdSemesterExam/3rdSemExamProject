@@ -130,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\EASJ_logo.png" />
+    <Content Include="Assets\nexusae0_kk-contactless-card.png" />
     <Content Include="Assets\zealand.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
