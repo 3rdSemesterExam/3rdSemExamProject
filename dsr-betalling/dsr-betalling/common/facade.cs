@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using dsr_betalling.exception;
 using dsr_betalling.Interface;
 using Newtonsoft.Json;
+using static System.String;
+
 // ReSharper disable RedundantCatchClause
 
 namespace dsr_betalling.Common
@@ -30,8 +32,9 @@ namespace dsr_betalling.Common
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!IsNullOrEmpty(Token))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
@@ -58,13 +61,16 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<T> GetAsync<T>(T obj, int id) where T : IWebUri, new()
         {
-            T result = new T();
+            var result = new T();
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!IsNullOrEmpty(Token))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + result.ResourceUri + "/" + id);
@@ -90,6 +96,7 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> PostAsync<T>(T obj) where T : IWebUri
         {
+            if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -122,6 +129,7 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> PutAsync<T>(T obj, int id) where T : IWebUri
         {
+            if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -154,6 +162,7 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> DeleteAsync<T>(T obj, int id) where T : IWebUri
         {
+            if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -224,6 +233,7 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> DoChangePasswordAsync(string oldPassword, string newPassword)
         {
+            if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -263,6 +273,7 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> DoCreateUser(string email, string username, string password)
         {
+            if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
@@ -273,7 +284,7 @@ namespace dsr_betalling.Common
                 var kvp = new List<KeyValuePair<string, string>>
                         {
                             new KeyValuePair<string, string>( "Email", email ),
-                            new KeyValuePair<string, string> ( "Username", username ),
+                            new KeyValuePair<string, string>( "Username", username ),
                             new KeyValuePair<string, string>( "Password", password ),
                             new KeyValuePair<string, string>( "ConfirmPassword", password )
                         };
