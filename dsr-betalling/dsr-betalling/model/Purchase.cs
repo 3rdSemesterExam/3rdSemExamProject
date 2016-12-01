@@ -1,22 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using dsr_betalling.Interface;
 
-namespace dsr_betalling.model
+namespace dsr_betalling.Model
 {
-    class Purchase
+    class Purchase:IWebUri
     {
         public int Id { get; set; }
         public int FK_Account { get; set; }
         public int FK_User { get; set; }
         public float TotalPrice { get; set; }
         public DateTime Created { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
 
         public Purchase()
         {
-            
+            ResourceUri = "Purchases";
+            VerboseName = "Purchases";
         }
+
     }
 }

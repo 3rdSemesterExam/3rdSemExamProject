@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Popups;
 
-namespace dsr_betalling.handler
+namespace dsr_betalling.Handler
 {
     public static class ExceptionHandler
     {

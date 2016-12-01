@@ -1,25 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using dsr_betalling.Interface;
 
-namespace dsr_betalling.model
+namespace dsr_betalling.Model
 {
-    class Activity
+    class Activity : IWebUri
     {
-        private int Id { get; set; }
-        private string Title { get; set; }
+        public int Id { get; }
+        public string Title { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
 
-        public Activity(string title)
+        public Activity()
+        {
+            ResourceUri = "Activities";
+            VerboseName = "Activities";
+        }
+
+        public Activity(string title) : this()
         {
             Title = title;
         }
 
-        public Activity(int id, string title)
+        public Activity(int id, string title) : this()
         {
             Id = id;
             Title = title;
         }
+
     }
 }

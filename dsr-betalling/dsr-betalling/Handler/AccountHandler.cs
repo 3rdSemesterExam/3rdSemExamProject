@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dsr_betalling.common;
-using dsr_betalling.model;
+using dsr_betalling.Common;
+using dsr_betalling.Model;
 
-namespace dsr_betalling.handler
+namespace dsr_betalling.Handler
 {
     class AccountHandler
     {
@@ -17,15 +17,7 @@ namespace dsr_betalling.handler
         /// <returns>Account Object</returns>
         public static async Task<Account> GetAccountAsync(int accountId)
         {
-            try
-            {
-                return await facade.GetAsync(new Account(), accountId);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            
+            return await Facade.GetAsync(new Account(), accountId);
         }
 
         /// <summary>
@@ -35,7 +27,7 @@ namespace dsr_betalling.handler
         /// <returns>Boolean</returns>
         public static async Task<bool> CreateAccountAsync(Account account)
         {
-            return await facade.PostAsync(account);
+            return await Facade.PostAsync(account);
         }
 
         /// <summary>
@@ -45,7 +37,7 @@ namespace dsr_betalling.handler
         /// <returns>Boolean</returns>
         public static async Task<bool> UpdateAccountAsync(Account account)
         {
-            return await facade.PutAsync(account, account.Id);
+            return await Facade.PutAsync(account, account.Id);
         }
 
         /// <summary>
@@ -55,7 +47,7 @@ namespace dsr_betalling.handler
         /// <returns>Boolean</returns>
         public static async Task<bool> DeleteAccountAsync(int accountId)
         {
-            return await facade.DeleteAsync(new Account(), accountId);
+            return await Facade.DeleteAsync(new Account(), accountId);
         }
     }
 }

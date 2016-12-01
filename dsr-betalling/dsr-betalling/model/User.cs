@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using dsr_betalling.Interface;
 
-namespace dsr_betalling.model
+namespace dsr_betalling.Model
 {
-    class User
+    class User : IWebUri
     {
         public int Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
 
         public User()
         {
-            
+            ResourceUri = "Users";
+            VerboseName = "Users";
         }
+
     }
 }

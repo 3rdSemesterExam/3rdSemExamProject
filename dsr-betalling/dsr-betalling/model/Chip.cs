@@ -1,33 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dsr_betalling.@interface;
+﻿using dsr_betalling.Interface;
 
-namespace dsr_betalling.model
+namespace dsr_betalling.Model
 {
-    class Chip: IWebUri
+    class Chip : IWebUri
     {
-        private int Id { get; set; }
+        public int Id { get; }
         public string ChipId { get; set; }
-        private int FK_Account { get; set; }
+        public int FK_Account { get; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
         public Chip()
         {
-            ResourceUri = "";
-            VerboseName = "";
+            ResourceUri = "Chips";
+            VerboseName = "Chips";
         }
 
-        public Chip(string chipId, int accountId): this()
+        public Chip(string chipId, int accountId) : this()
         {
             ChipId = chipId;
             FK_Account = accountId;
         }
 
-        public Chip(int id, string chipId, int accountId): this()
+        public Chip(int id, string chipId, int accountId) : this()
         {
             Id = id;
             ChipId = chipId;

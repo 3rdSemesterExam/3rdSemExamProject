@@ -16,7 +16,8 @@ namespace dsr_betalling.Model
 
         public ActivityLog()
         {
-
+            ResourceUri = "ActivityLogs";
+            VerboseName = "ActivityLogs";
         }
 
     }

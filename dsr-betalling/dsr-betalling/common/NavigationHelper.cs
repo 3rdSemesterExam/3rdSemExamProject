@@ -1,9 +1,9 @@
 ﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using dsr_betalling.handler;
+using dsr_betalling.Handler;
 
-namespace dsr_betalling.common
+namespace dsr_betalling.Common
 {
     class NavigationHelper
     {
@@ -12,12 +12,12 @@ namespace dsr_betalling.common
         /// </summary>
         private static Frame _frame;
 
-        public static void navigate(Type page)
+        public static void Navigate(Type page)
         {
             try
             {
                 _frame = (Window.Current.Content as Frame);
-                _frame?.Navigate(page); // Hvis _frame IKKE er null
+                _frame?.Navigate(page);
             }
             catch (Exception ex)
             {

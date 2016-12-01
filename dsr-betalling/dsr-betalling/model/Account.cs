@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using dsr_betalling.@interface;
+﻿using dsr_betalling.Interface;
 
-namespace dsr_betalling.model
+namespace dsr_betalling.Model
 {
     class Account : IWebUri
     {
-        public int Id { get; private set; }
+        public int Id { get; }
         public string AccountHolderName { get; set; }
         public float Balance { get; private set; }
         public string ResourceUri { get; }
@@ -17,8 +12,8 @@ namespace dsr_betalling.model
 
         public Account()
         {
-            ResourceUri = "";
-            VerboseName = "";
+            ResourceUri = "Accounts";
+            VerboseName = "Accounts";
         }
 
         public Account(string accountHolderName, float balance) : this()

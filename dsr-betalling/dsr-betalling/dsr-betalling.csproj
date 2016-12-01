@@ -95,19 +95,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Common\access.cs" />
-    <Compile Include="Common\facade.cs" />
+    <Compile Include="Common\Facade.cs" />
     <Compile Include="Common\NavigationHelper.cs" />
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Exception\HttpErrorException.cs" />
-    <Compile Include="Exception\ListEmptyException.cs" />
-    <Compile Include="Exception\ServerErrorException.cs" />
     <Compile Include="Handler\AccountHandler.cs" />
     <Compile Include="Handler\ChipHandler.cs" />
     <Compile Include="Handler\ExceptionHandler.cs" />
     <Compile Include="Handler\ProductHandler.cs" />
     <Compile Include="Handler\PurchaseHandler.cs" />
-    <Compile Include="Interface\IGetById.cs" />
     <Compile Include="Interface\IWebUri.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\Activity.cs" />
@@ -117,6 +113,9 @@
     <Compile Include="Model\Purchase.cs" />
     <Compile Include="Model\PurchaseItems.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\vmAccount.cs" />
+    <Compile Include="ViewModel\vmAccess.cs" />
+    <Compile Include="ViewModel\vmSale.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -148,15 +147,7 @@
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

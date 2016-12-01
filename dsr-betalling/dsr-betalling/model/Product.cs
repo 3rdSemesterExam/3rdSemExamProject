@@ -13,7 +13,8 @@ namespace dsr_betalling.Model
 
         public Product()
         {
-            
+            ResourceUri = "Products";
+            VerboseName = "Products";
         }
     }
 }

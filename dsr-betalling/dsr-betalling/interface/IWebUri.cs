@@ -1,4 +1,4 @@
-﻿namespace dsr_betalling.@interface
+﻿namespace dsr_betalling.Interface
 {
     public interface IWebUri
     {
