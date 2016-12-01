@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using dsr_betalling.exception;
+using dsr_betalling.Interface;
+using Newtonsoft.Json;
+// ReSharper disable RedundantCatchClause
 
-using dsr_betalling.@interface;
-
-namespace dsr_betalling.common
+namespace dsr_betalling.Common
 {
-    public static class facade
+    public static class Facade
     {
-        private const string ServerUrl = "http://statuedatabasewepapi.azurewebsites.net"; // HTTP URL of Server
-        // private const string ServerUrl = "http://localhost:55000"; // HTTP URL of Server
+        private const string ServerUrl = "http://dsr-webservice.azurewebsites.net"; // HTTP URL of Server
         private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
+        private static string Token;
 
         /// <summary>
         /// 
@@ -28,6 +30,7 @@ namespace dsr_betalling.common
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -80,7 +83,7 @@ namespace dsr_betalling.common
         }
 
         /// <summary>
-        /// Sender et objekt til webservicen, serialiseret som JSON
+        /// Posts an Object to the Webservice, Serialized as JSON
         /// </summary>
         /// <typeparam name="T">Objekt Type</typeparam>
         /// <param name="obj">Objekt som skal sendes</param>
@@ -92,6 +95,7 @@ namespace dsr_betalling.common
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -110,7 +114,7 @@ namespace dsr_betalling.common
         }
 
         /// <summary>
-        /// 
+        /// Updates an Object in the Webservice, serialized as JSON, by Id
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -123,6 +127,7 @@ namespace dsr_betalling.common
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -141,7 +146,7 @@ namespace dsr_betalling.common
         }
 
         /// <summary>
-        /// 
+        /// Deletes an Object from the Webservice, by Id
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -154,6 +159,7 @@ namespace dsr_betalling.common
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -163,6 +169,122 @@ namespace dsr_betalling.common
                         throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
                     }
                     return true;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Performs a Login check
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static async Task<bool> DoLoginAsync(string username, string password)
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/x-www-form-urlencoded"));
+                var kvp = new List<KeyValuePair<string, string>>
+                        {
+                            new KeyValuePair<string, string>( "username", username ),
+                            new KeyValuePair<string, string> ( "password", password ),
+                            new KeyValuePair<string, string>( "grant_type", "password" )
+                        };
+                var EncodedContent = new FormUrlEncodedContent(kvp);
+                try
+                {
+                    var response = await client.PostAsync("/token", EncodedContent);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        if (response.StatusCode == HttpStatusCode.Unauthorized) return false;
+                        throw new HttpErrorException("HTTP Error\n" + "Login: " + response.ReasonPhrase);
+                    }
+                    Token = (await response.Content.ReadAsStringAsync()).Split('"')[3];
+                    return true;
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Changes the password of the user currently Logged In
+        /// </summary>
+        /// <param name="oldPassword"></param>
+        /// <param name="newPassword"></param>
+        /// <returns></returns>
+        public static async Task<bool> DoChangePasswordAsync(string oldPassword, string newPassword)
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var kvp = new List<KeyValuePair<string, string>>
+                        {
+                            new KeyValuePair<string, string>( "OldPassword", oldPassword ),
+                            new KeyValuePair<string, string> ( "NewPassword", newPassword ),
+                            new KeyValuePair<string, string>( "ConfirmPassword", newPassword )
+                        };
+                var EncodedContent = JsonConvert.SerializeObject(kvp);
+                try
+                {
+                    var response = await client.PostAsJsonAsync("/api/Account/ChangePassword", EncodedContent);
+                    if (response.IsSuccessStatusCode) return true;
+                    if (response.StatusCode == HttpStatusCode.BadRequest &&
+                        response.ReasonPhrase.Contains("The new password and confirmation password do not match."))
+                        return false;
+                    throw new HttpErrorException("HTTP Error\n" + "Change Password: " + response.ReasonPhrase);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates a User that can access the Authorized part of the Webservice
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public static async Task<bool> DoCreateUser(string email, string username, string password)
+        {
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var kvp = new List<KeyValuePair<string, string>>
+                        {
+                            new KeyValuePair<string, string>( "Email", email ),
+                            new KeyValuePair<string, string> ( "Username", username ),
+                            new KeyValuePair<string, string>( "Password", password ),
+                            new KeyValuePair<string, string>( "ConfirmPassword", password )
+                        };
+                var EncodedContent = JsonConvert.SerializeObject(kvp);
+                try
+                {
+                    var response = await client.PostAsJsonAsync("/api/Account/Register", EncodedContent);
+                    if (response.IsSuccessStatusCode) return true;
+                    if (response.StatusCode == HttpStatusCode.BadRequest)
+                        return false;
+                    throw new HttpErrorException("HTTP Error\n" + "Create User: " + response.ReasonPhrase);
                 }
                 catch (Exception)
                 {
