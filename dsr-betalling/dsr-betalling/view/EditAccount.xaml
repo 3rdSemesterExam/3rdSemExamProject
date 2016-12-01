@@ -41,6 +41,7 @@
             <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click"/>
             <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_Click"/>
         </StackPanel>
+        <ListView x:Name="listView" Margin="0,150,91,270" Width="230" RenderTransformOrigin="0.455,0.529" d:LayoutOverrides="Width" Background="#38000000" Height="300" FontSize="21.333" HorizontalAlignment="Right" Header="Currency"/>
 
     </Grid>
 </Page>
