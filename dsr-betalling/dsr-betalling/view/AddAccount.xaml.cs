@@ -62,5 +62,10 @@ namespace dsr_betalling.view
         {
             NavigationHelper.navigate(typeof(MainPage));
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AccountManager));
+        }
     }
 }

@@ -31,8 +31,8 @@ namespace dsr_betalling.view
 
         private async void AddChipButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Chip added!");
-            await dialog.ShowAsync();
+            //var dialog = new MessageDialog("Chip added!");
+            //await dialog.ShowAsync();
         }
 
         private async void DeleteChipButton_Click(object sender, RoutedEventArgs e)
@@ -54,6 +54,16 @@ namespace dsr_betalling.view
         }
 
         private void AccountManagerButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(AccountManager));
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(MainPage));
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationHelper.navigate(typeof(AccountManager));
         }
