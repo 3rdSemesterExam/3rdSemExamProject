@@ -23,7 +23,7 @@
                 <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100"  Click="AccountManagerButton_OnClick"/>
             </StackPanel>
             <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0" >
-                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100"/>
+                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_Click"/>
             </StackPanel>
         </Grid>
 
@@ -39,8 +39,9 @@
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="895,500,185,45" Orientation="Vertical" Width="200" Height="175">
             <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click"/>
-            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36"/>
+            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_Click"/>
         </StackPanel>
+        <ListView x:Name="listView" Margin="0,150,91,270" Width="230" RenderTransformOrigin="0.455,0.529" d:LayoutOverrides="Width" Background="#38000000" Height="300" FontSize="21.333" HorizontalAlignment="Right" Header="Currency"/>
 
     </Grid>
 </Page>

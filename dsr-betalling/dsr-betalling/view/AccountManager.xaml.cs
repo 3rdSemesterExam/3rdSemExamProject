@@ -54,5 +54,10 @@ namespace dsr_betalling.view
         {
             NavigationHelper.Navigate(typeof(Sale));
         }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationHelper.navigate(typeof(MainPage));
+        }
     }
 }
