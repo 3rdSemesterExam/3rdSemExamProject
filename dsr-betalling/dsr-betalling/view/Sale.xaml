@@ -38,12 +38,12 @@
             </StackPanel>
         </Grid>
         <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="0,105,860,0" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="ProductListView_OnDoubleTapped">
+            <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="ProductListView_OnDoubleTapped" Header="Products">
                 <ListViewItem Content="ListViewItem"/>
             </ListView>
         </StackPanel>
         <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="0,105,0,0" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="OrderedListView_OnDoubleTapped"/>
+            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order"/>
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="780,100,0,0" Orientation="Vertical" Width="400" d:LayoutOverrides="TopPosition, BottomPosition" Height="520">
             <StackPanel x:Name="InfoStack" Margin="0" Orientation="Vertical" Height="350" Width="400">
