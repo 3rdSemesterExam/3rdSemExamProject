@@ -106,7 +106,7 @@ namespace dsr_betalling.ViewModel
             
             //AddPurchaseCommand = new RelayCommand(PurchaseHandler.PostPurchase);
 
-            //AddPurchaseItemsCommand = new RelayCommand(PurchaseHandler.PostPurchaseItems);
+            //AddPurchaseItemsCommand = new RelayCommand(PurchaseHandler.PostPurchaseItems); 
         }
 
         #region PropertyChangedSupport
