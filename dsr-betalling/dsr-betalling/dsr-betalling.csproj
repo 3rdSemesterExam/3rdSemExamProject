@@ -95,21 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="common\access.cs" />
-    <Compile Include="common\databasehelper.cs" />
-    <Compile Include="common\NavigationHelper.cs" />
-    <Compile Include="model\Account.cs" />
-    <Compile Include="model\Activity.cs" />
-    <Compile Include="model\ActivityLog.cs" />
-    <Compile Include="model\Chip.cs" />
-    <Compile Include="model\Product.cs" />
-    <Compile Include="model\Purchase.cs" />
-    <Compile Include="model\PurchaseItems.cs" />
-    <Compile Include="model\User.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="viewmodel\vmAccess.cs" />
-    <Compile Include="viewmodel\vmAccount.cs" />
-    <Compile Include="viewmodel\vmSale.cs" />
     <Compile Include="view\AccountManager.xaml.cs">
       <DependentUpon>AccountManager.xaml</DependentUpon>
     </Compile>
@@ -172,7 +158,11 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="common\" />
+    <Folder Include="model\" />
+    <Folder Include="viewmodel\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
