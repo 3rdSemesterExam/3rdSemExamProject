@@ -106,6 +106,28 @@
       <DependentUpon>AddAccount.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\MainPage.xaml.cs">
+    <Compile Include="Common\Facade.cs" />
+    <Compile Include="Common\NavigationHelper.cs" />
+    <Compile Include="Common\RelayCommand.cs" />
+    <Compile Include="Exception\HttpErrorException.cs" />
+    <Compile Include="Handler\AccountHandler.cs" />
+    <Compile Include="Handler\ChipHandler.cs" />
+    <Compile Include="Handler\ExceptionHandler.cs" />
+    <Compile Include="Handler\ProductHandler.cs" />
+    <Compile Include="Handler\PurchaseHandler.cs" />
+    <Compile Include="Interface\IWebUri.cs" />
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\ActivityLog.cs" />
+    <Compile Include="Model\Chip.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Purchase.cs" />
+    <Compile Include="Model\PurchaseItems.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\vmAccount.cs" />
+    <Compile Include="ViewModel\vmAccess.cs" />
+    <Compile Include="ViewModel\vmSale.cs" />
+    <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -163,6 +185,7 @@
     <Folder Include="model\" />
     <Folder Include="viewmodel\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
