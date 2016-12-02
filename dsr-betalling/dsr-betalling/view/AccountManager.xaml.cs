@@ -13,14 +13,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
-using dsr_betalling.common;
+using dsr_betalling.Common;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace dsr_betalling.view
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// An empty page that can be used on its own or Navigated to within a Frame.
     /// </summary>
     public sealed partial class AccountManager : Page
     {
@@ -37,22 +37,22 @@ namespace dsr_betalling.view
 
         private void AddAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.navigate(typeof(AddAccount));
+            NavigationHelper.Navigate(typeof(AddAccount));
         }
 
         private void EditAccountButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.navigate(typeof(EditAccount));
+            NavigationHelper.Navigate(typeof(EditAccount));
         }
 
         private void AccountManagerButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.navigate(typeof(AccountManager));
+            NavigationHelper.Navigate(typeof(AccountManager));
         }
 
         private void SalesButton_Onclick(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.navigate(typeof(Sale));
+            NavigationHelper.Navigate(typeof(Sale));
         }
     }
 }
