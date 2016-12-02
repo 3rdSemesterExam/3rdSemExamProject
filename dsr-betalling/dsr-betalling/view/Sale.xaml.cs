@@ -95,7 +95,7 @@ namespace dsr_betalling.view
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationHelper.navigate(typeof(MainPage));
+            NavigationHelper.Navigate(typeof(MainPage));
         }
     }
 }
