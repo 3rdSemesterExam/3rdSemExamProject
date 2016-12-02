@@ -303,5 +303,12 @@ namespace dsr_betalling.Common
                 }
             }
         }
+
+        public static bool DoLogout()
+        {
+            if (IsNullOrEmpty(Token)) return false;
+            Token = null;
+            return true;
+        }
     }
 }
