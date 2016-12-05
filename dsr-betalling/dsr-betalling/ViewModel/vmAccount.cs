@@ -73,25 +73,25 @@ namespace dsr_betalling.ViewModel
 
 
             //EditAccount
-
+            Populate();
         }
 
         // AccountManager
         public async void RemoveAccount(int accountId)
         {
-            //AccountHandler.DeleteAccountAsync(accountId);
+            await AccountHandler.DeleteAccountAsync(accountId);
         }
 
         //AddAccount
-        public void AddAccount()
+        public async void AddAccount()
         {
-            AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
+            await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
         }
 
         //EditAccount
-        public void EditAccount()
+        public async void EditAccount()
         {
-            AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderName, Balance));
+            await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderName, Balance));
         }
 
         private async void Populate()
