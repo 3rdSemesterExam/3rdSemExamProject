@@ -4,19 +4,27 @@ namespace dsr_betalling.Model
 {
     class PurchaseItems : IWebUri
     {
-        public int Id { get; set; }
-        public int FK_Purchase { get; set; }
-        public int FK_Product { get; set; }
-        public int Amount { get; set; }
-        public float Price { get; set; }
+        private int Id { get; set; }
+        private int FK_Purchase { get; set; }
+        private int FK_Product { get; set; }
+        private int Amount { get; set; }
+        private float Price { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
-        public PurchaseItems()
+        private PurchaseItems()
         {
             ResourceUri = "PurchaseItems";
             VerboseName = "PurchaseItems";
         }
 
+        public PurchaseItems(int fkProduct, int amount, float price) : this()
+        {
+            Id = 0;
+            FK_Purchase = 0;
+            FK_Product = fkProduct;
+            Amount = amount;
+            Price = price;
+        }
     }
 }
