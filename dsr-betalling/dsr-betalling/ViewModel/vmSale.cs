@@ -18,6 +18,7 @@ namespace dsr_betalling.ViewModel
     {
         private ObservableCollection<PurchaseItems> _purchaseItems;
         private ObservableCollection<Product> _productList;
+        private bool _loadingIcon;
 
         public ObservableCollection<Product> ProductList
         {
@@ -42,6 +43,12 @@ namespace dsr_betalling.ViewModel
         public float Discount { get; set; }
         public string ChipId { get; set; }
 
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged(); }
+        }
+
         // PurchaseCommands
         public ICommand MakePurchaseCommand { get; set; }
 
@@ -56,21 +63,21 @@ namespace dsr_betalling.ViewModel
         {
             try
             {
-                //LoadingIcon = True;
+                LoadingIcon = true;
                 var listOfProducts = await Facade.GetListAsync(new Product());
                 foreach (var product in listOfProducts)
                 {
                     ProductList.Add(product);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw new Exception(ex.Message);
+                
             }
             finally
             {
-                // LoadingIcon = False;
+                 LoadingIcon = false;
             }
         }
 

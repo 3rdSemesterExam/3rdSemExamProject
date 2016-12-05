@@ -11,7 +11,7 @@ namespace dsr_betalling.ViewModel
 {
     class vmAccess : INotifyPropertyChanged
     {
-
+        
 
 
 
