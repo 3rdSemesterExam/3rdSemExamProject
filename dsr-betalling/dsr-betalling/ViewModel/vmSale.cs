@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,7 +66,8 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                var listOfProducts = await Facade.GetListAsync(new Product());
+                //var listOfProducts = await Facade.GetListAsync(new Product());
+                var listOfProducts = ProductList;
                 foreach (var product in listOfProducts)
                 {
                     ProductList.Add(product);
@@ -74,11 +76,10 @@ namespace dsr_betalling.ViewModel
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
-                
             }
             finally
             {
-                 LoadingIcon = false;
+                LoadingIcon = false;
             }
         }
 
