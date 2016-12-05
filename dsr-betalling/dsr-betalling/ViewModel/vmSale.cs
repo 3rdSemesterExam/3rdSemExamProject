@@ -72,8 +72,6 @@ namespace dsr_betalling.ViewModel
             {
                 // LoadingIcon = False;
             }
-
-
         }
 
         public void MakePurchase()
