@@ -11,42 +11,74 @@ using dsr_betalling.Handler;
 using dsr_betalling.Common;
 using dsr_betalling.Annotations;
 using dsr_betalling.Model;
+
 namespace dsr_betalling.ViewModel
 {
     class vmSale : INotifyPropertyChanged
     {
-        private int _amount;
-        private float _price;
-        private int _fkProduct;
+        private ObservableCollection<PurchaseItems> _purchaseItems;
+        private ObservableCollection<Product> _productList;
 
-        //ProductItems
-        public int Amount
+        public ObservableCollection<Product> ProductList
         {
-            get { return _amount; }
-            set { _amount = value; OnPropertyChanged(); }
-        }
-        public float Price
-        {
-            get { return _price; }
-            set { _price = value; OnPropertyChanged(); }
-        }
-        public int Fk_Product
-        {
-            get { return _fkProduct; }
-            set { _fkProduct = value; OnPropertyChanged(); }
+            get { return _productList; }
+            set
+            {
+                _productList = value;
+                OnPropertyChanged();
+            }
         }
 
-        public ObservableCollection<Product> Products { get; set; }
-        public ObservableCollection<PurchaseItems> PurchaseItemsCollection { get; set; }
+        public ObservableCollection<PurchaseItems> PurchaseItems
+        {
+            get { return _purchaseItems; }
+            set
+            {
+                _purchaseItems = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public float Discount { get; set; }
+        public string ChipId { get; set; }
 
         // PurchaseCommands
-        public ICommand AddPurchaseCommand { get; set; }
-        public ICommand AddPurchaseItemsCommand { get; set; }
+        public ICommand MakePurchaseCommand { get; set; }
 
         public vmSale()
         {
-            //AddPurchaseCommand = new RelayCommand(PurchaseHandler.PostPurchase);
-            //AddPurchaseItemsCommand = new RelayCommand(PurchaseHandler.PostPurchaseItems); 
+            ProductList = new ObservableCollection<Product>();
+            PurchaseItems = new ObservableCollection<PurchaseItems>();
+            Populate();
+        }
+
+        private async void Populate()
+        {
+            try
+            {
+                //LoadingIcon = True;
+                var listOfProducts = await Facade.GetListAsync(new Product());
+                foreach (var product in listOfProducts)
+                {
+                    ProductList.Add(product);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                // LoadingIcon = False;
+            }
+
+
+        }
+
+        public void MakePurchase()
+        {
+            // PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
         }
 
         #region PropertyChangedSupport
