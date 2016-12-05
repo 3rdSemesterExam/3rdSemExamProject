@@ -15,43 +15,36 @@ namespace dsr_betalling.ViewModel
 {
     class vmSale : INotifyPropertyChanged
     {
-        private int _productId;
-        private float _productPrice;
+        private int _amount;
+        private float _price;
+        private int _fkProduct;
 
-        private float _totalPrice;
-
-        // Product 
-        public int ProductId
+        //ProductItems
+        public int Amount
         {
-            get { return _productId; }
-            set  { _productId = value; OnPropertyChanged(); }
+            get { return _amount; }
+            set { _amount = value; OnPropertyChanged(); }
         }
-        public float ProductPrice
+        public float Price
         {
-            get { return _productPrice; }
-            set { _productPrice = value; OnPropertyChanged(); }
+            get { return _price; }
+            set { _price = value; OnPropertyChanged(); }
+        }
+        public int Fk_Product
+        {
+            get { return _fkProduct; }
+            set { _fkProduct = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<PurchaseItems> PurchaseItemsCollection { get; set; }
 
-        //Purchase
-        public float TotalPrice
-        {
-            get { return _totalPrice; }
-            set { _totalPrice = value; OnPropertyChanged(); }
-        }
-
         // PurchaseCommands
-        public Handler.PurchaseHandler PurchaseHandler{ get; }
-
         public ICommand AddPurchaseCommand { get; set; }
         public ICommand AddPurchaseItemsCommand { get; set; }
 
         public vmSale()
         {
-            PurchaseHandler = new Handler.PurchaseHandler();
-            
             //AddPurchaseCommand = new RelayCommand(PurchaseHandler.PostPurchase);
             //AddPurchaseItemsCommand = new RelayCommand(PurchaseHandler.PostPurchaseItems); 
         }
