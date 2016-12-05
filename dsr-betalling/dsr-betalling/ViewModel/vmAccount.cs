@@ -20,35 +20,53 @@ namespace dsr_betalling.ViewModel
         private bool _loadingIcon;
         private ObservableCollection<Chip> _chipObservableCollection;
 
+
         public ObservableCollection<Account> AccountObservableCollection
         {
             get { return _accountObservableCollection; }
-            set { _accountObservableCollection = value; OnPropertyChanged();}
+            set
+            {
+                _accountObservableCollection = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<Chip> ChipObservableCollection
         {
             get { return _chipObservableCollection; }
-            set { _chipObservableCollection = value; OnPropertyChanged(); }
+            set
+            {
+                _chipObservableCollection = value;
+                OnPropertyChanged();
+            }
         }
 
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
+            set
+            {
+                _loadingIcon = value;
+                OnPropertyChanged();
+            }
         }
-        public ICommand DeleteAccountCommand { get; set; }
 
+        public ICommand AddAccountCommand { get; set; }
+        public ICommand DeleteAccountCommand { get; set; }
+        public ICommand UpdateAccountCommand { get; set; }
+        public ICommand AddChipCommand { get; set; }
+        public ICommand DeleteChipcomand { get; set; }
         //
-        
+
 
         public vmAccount()
         {
             //AccountManager
             AccountObservableCollection = new ObservableCollection<Account>();
-   
+
             //AddAccount
             ChipObservableCollection = new ObservableCollection<Chip>();
+
 
             //EditAccount
 
@@ -61,11 +79,19 @@ namespace dsr_betalling.ViewModel
         }
 
         //AddAccount
+        public void AddAccount()
+        {
+            //AccountHandler.CreateAccountAsync();
+        }
 
         //EditAccount
+        public void EditAccount()
+        {
+            //AccountHandler.UpdateAccountAsync()
+        }
+    
 
-
-        private async void Populate()
+    private async void Populate()
         {
             try
             {
