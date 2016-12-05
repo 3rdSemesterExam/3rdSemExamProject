@@ -41,6 +41,10 @@ namespace dsr_betalling.ViewModel
             }
         }
 
+        public int Id { get; set; }
+        public string AccountHolderName { get; set; }
+        public float Balance { get; set; }
+
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
@@ -81,23 +85,22 @@ namespace dsr_betalling.ViewModel
         //AddAccount
         public void AddAccount()
         {
-            //AccountHandler.CreateAccountAsync();
+            AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
         }
 
         //EditAccount
         public void EditAccount()
         {
-            //AccountHandler.UpdateAccountAsync()
+            AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderName, Balance));
         }
-    
 
-    private async void Populate()
+        private async void Populate()
         {
             try
             {
                 LoadingIcon = true;
                 //var listOfProducts = await Facade.GetListAsync(new Product());
-                var listOfProducts =  AccountObservableCollection;
+                var listOfProducts = AccountObservableCollection;
                 foreach (var account in listOfProducts)
                 {
                     AccountObservableCollection.Add(account);
