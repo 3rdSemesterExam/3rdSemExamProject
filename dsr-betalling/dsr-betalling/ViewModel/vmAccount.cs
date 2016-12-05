@@ -16,8 +16,30 @@ namespace dsr_betalling.ViewModel
 {
     class vmAccount : INotifyPropertyChanged
     {
-        public ObservableCollection<Account> AccountObservableCollection { get; set; }
+        private ObservableCollection<Account> _accountObservableCollection;
+        private bool _loadingIcon;
+        private ObservableCollection<Chip> _chipObservableCollection;
+
+        public ObservableCollection<Account> AccountObservableCollection
+        {
+            get { return _accountObservableCollection; }
+            set { _accountObservableCollection = value; OnPropertyChanged();}
+        }
+
+        public ObservableCollection<Chip> ChipObservableCollection
+        {
+            get { return _chipObservableCollection; }
+            set { _chipObservableCollection = value; OnPropertyChanged(); }
+        }
+
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged(); }
+        }
         public ICommand DeleteAccountCommand { get; set; }
+
+        //
         
 
         public vmAccount()
@@ -25,7 +47,8 @@ namespace dsr_betalling.ViewModel
             //AccountManager
             AccountObservableCollection = new ObservableCollection<Account>();
    
-            //AddAccoun
+            //AddAccount
+            ChipObservableCollection = new ObservableCollection<Chip>();
 
             //EditAccount
 
@@ -41,6 +64,28 @@ namespace dsr_betalling.ViewModel
 
         //EditAccount
 
+
+        private async void Populate()
+        {
+            try
+            {
+                LoadingIcon = true;
+                //var listOfProducts = await Facade.GetListAsync(new Product());
+                var listOfProducts =  AccountObservableCollection;
+                foreach (var account in listOfProducts)
+                {
+                    AccountObservableCollection.Add(account);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+        }
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
 
