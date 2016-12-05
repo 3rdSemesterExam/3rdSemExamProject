@@ -5,8 +5,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:ViewModel="using:dsr_betalling.ViewModel"
     x:Class="dsr_betalling.view.Sale"
     mc:Ignorable="d" FontSize="36">
+    <Page.DataContext>
+        <ViewModel:vmSale/>
+    </Page.DataContext>
     <!--<Page.TopAppBar>
         <CommandBar Height="45" >
             <CommandBar.Content>
@@ -43,7 +47,9 @@
             </ListView>
         </StackPanel>
         <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="0,105,0,0" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order"/>
+            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order">
+                <ProgressRing IsActive="{Binding Mode=OneWay}"/>
+            </ListView>
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="780,100,0,0" Orientation="Vertical" Width="400" d:LayoutOverrides="TopPosition, BottomPosition" Height="520">
             <StackPanel x:Name="InfoStack" Margin="0" Orientation="Vertical" Height="350" Width="400">
@@ -69,9 +75,9 @@
                 <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click"/>
                 <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_OnClick"/>
             </StackPanel>
-        </StackPanel> 
+        </StackPanel>
         <!-- WON'T WORK UNTIL ASYNC METHOD HAS BEEN ADDED
         <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
         -->
-        </Grid>
+    </Grid>
 </Page>

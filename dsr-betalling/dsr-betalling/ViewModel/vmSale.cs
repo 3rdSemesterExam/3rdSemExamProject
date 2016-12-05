@@ -57,6 +57,7 @@ namespace dsr_betalling.ViewModel
             ProductList = new ObservableCollection<Product>();
             PurchaseItems = new ObservableCollection<PurchaseItems>();
             Populate();
+            ProductList.Add(new Product());
         }
 
         private async void Populate()
