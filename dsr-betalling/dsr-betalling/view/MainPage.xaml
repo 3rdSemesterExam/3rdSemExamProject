@@ -1,11 +1,16 @@
 ﻿<Page
-    x:Class="dsr_betalling.view.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:dsr_betalling.view"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:dsr_betalling.ViewModel"
+    x:Class="dsr_betalling.view.MainPage"
     mc:Ignorable="d">
+
+    <Page.DataContext>
+        <ViewModel:vmAccess/>
+    </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1280" Height="720">
         <StackPanel x:Name="TextBoxStack" Orientation="Vertical" Width="427" Height="255" Canvas.Left="427" Canvas.Top="358" Margin="426.6,315,426,150">

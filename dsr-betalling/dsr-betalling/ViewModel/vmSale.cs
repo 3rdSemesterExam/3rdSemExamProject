@@ -12,6 +12,7 @@ using dsr_betalling.Handler;
 using dsr_betalling.Common;
 using dsr_betalling.Annotations;
 using dsr_betalling.Model;
+using dsr_betalling.ViewModel;
 
 namespace dsr_betalling.ViewModel
 {
