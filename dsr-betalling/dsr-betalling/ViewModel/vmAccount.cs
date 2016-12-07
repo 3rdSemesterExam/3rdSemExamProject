@@ -39,6 +39,8 @@ namespace dsr_betalling.ViewModel
             }
         }
 
+        public int SelectedIndex { get; set; }
+
         public ICommand DeleteAccountCommand { get; set; }
         
         public vmAccount()
@@ -51,8 +53,11 @@ namespace dsr_betalling.ViewModel
 
         public async void RemoveAccount(int accountId)
         {
-            await AccountHandler.DeleteAccountAsync(accountId);
+            if (SelectedIndex > -1)
+                AccountObservableCollection.RemoveAt(SelectedIndex);
+            await AccountHandler.DeleteAccountAsync(SelectedIndex);
         }
+   
 
         /// <summary>
         /// Populates a list when page in loaded.
