@@ -45,6 +45,8 @@ namespace dsr_betalling.ViewModel
         {
             Populate();
             AccountObservableCollection = new ObservableCollection<Account>();
+
+            DeleteAccountCommand = new RelayCommand(RemoveAccount());
         }
 
         public async void RemoveAccount(int accountId)
