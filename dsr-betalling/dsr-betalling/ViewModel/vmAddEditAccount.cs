@@ -67,12 +67,15 @@ namespace dsr_betalling.ViewModel
         }
 
         //AddAccount
+        //NOTE: AccountHolderName is splitted into FirstName and LastName
         public async void AddAccount()
         {
+
             //await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
         }
 
         //EditAccount
+        //NOTE: AccountHolderName is splitted into FirstName and LastName
         public async void EditAccount()
         {
             //await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
