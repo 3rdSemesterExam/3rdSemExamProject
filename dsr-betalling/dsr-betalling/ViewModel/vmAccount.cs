@@ -64,9 +64,9 @@ namespace dsr_betalling.ViewModel
         {
             try
             {
-                LoadingIcon = true;
-                var listOfAccounts = await Facade.GetListAsync(new Account());
-                //var listOfAccounts = AccountObservableCollection;
+               LoadingIcon = true;
+                //var listOfAccounts = await Facade.GetListAsync(new Account());
+                var listOfAccounts = AccountObservableCollection;
                 foreach (var account in listOfAccounts)
                 {
                     AccountObservableCollection.Add(account);

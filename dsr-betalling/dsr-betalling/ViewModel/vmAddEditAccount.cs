@@ -14,7 +14,7 @@ using dsr_betalling.Model;
 
 namespace dsr_betalling.ViewModel
 {
-    class vmAddEditAccount : INotifyPropertyChanged
+    public class vmAddEditAccount : INotifyPropertyChanged
     {
         private bool _loadingIcon;
         private ObservableCollection<Chip> _chipObservableCollection;
@@ -125,7 +125,7 @@ namespace dsr_betalling.ViewModel
             await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
         }
 
-        
+
 
         /// <summary>
         /// Populates a list when page in loaded.
@@ -135,8 +135,8 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                var listOfChips = await Facade.GetListAsync(new Chip());
-                //var listOfChips = AccountObservableCollection;
+                //var listOfChips = await Facade.GetListAsync(new Chip());
+                var listOfChips = ChipObservableCollection;
                 foreach (var chip in listOfChips)
                 {
                     ChipObservableCollection.Add(chip);
@@ -158,7 +158,7 @@ namespace dsr_betalling.ViewModel
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        } 
+        }
         #endregion
     }
 }
