@@ -61,6 +61,9 @@ namespace dsr_betalling.ViewModel
             ProductList.Add(new Product());
         }
 
+        /// <summary>
+        /// Populates a list when page in loaded.
+        /// </summary>
         private async void Populate()
         {
             try
