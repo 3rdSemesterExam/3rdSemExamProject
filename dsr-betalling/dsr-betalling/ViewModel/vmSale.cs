@@ -66,6 +66,8 @@ namespace dsr_betalling.ViewModel
             PurchaseItems = new ObservableCollection<PurchaseItems>();
             Populate();
             ProductList.Add(new Product());
+
+            MakePurchaseCommand = new RelayCommand(MakePurchase);
         }
 
         /// <summary>

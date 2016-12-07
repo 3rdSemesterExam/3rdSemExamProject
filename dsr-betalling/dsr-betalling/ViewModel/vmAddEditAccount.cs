@@ -89,6 +89,12 @@ namespace dsr_betalling.ViewModel
         {
             ChipObservableCollection = new ObservableCollection<Chip>();
 
+            AddAccountCommand = new RelayCommand(AddAccount);
+            UpdateAccountCommand = new RelayCommand(EditAccount);
+            AddChipCommand = new RelayCommand(AddChip);
+            DeleteChipCommand = new RelayCommand(DeleteChip);
+            //AddFundsCommand = new RelayCommand(AddFunds());
+
             //Only for EditAccount
             Populate();
         }
