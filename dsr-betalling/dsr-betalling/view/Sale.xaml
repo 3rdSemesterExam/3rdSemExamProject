@@ -24,8 +24,12 @@
     </Page.TopAppBar>-->
 
     <Grid Background="#FFE2E2E2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="613*"/>
+            <ColumnDefinition Width="667*"/>
+        </Grid.ColumnDefinitions>
 
-        <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620" Grid.ColumnSpan="3">
+        <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="426*"/>
                 <ColumnDefinition Width="426*"/>
@@ -41,16 +45,16 @@
                 <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_Click"/>
             </StackPanel>
         </Grid>
-        <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="0,105,860,0" Orientation="Vertical" Width="320" Height="525">
+        <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="50,150,242.75,45" Orientation="Vertical" Width="320" Height="525">
             <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="5,0" DoubleTapped="ProductListView_OnDoubleTapped" Header="Products" ItemsSource="{Binding ProductList}">
                 <!--<ListViewItem Content="ListViewItem"/>-->
             </ListView>
             <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
         </StackPanel>
-        <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="0,105,0,0" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order"/>
+        <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="480,150,480,45" Orientation="Vertical" Width="320" Height="525" Grid.ColumnSpan="2">
+            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="5,0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order" ItemsSource="{Binding PurchaseItems}"/>
         </StackPanel>
-        <StackPanel x:Name="ControlStack" Margin="780,100,0,0" Orientation="Vertical" Width="400" d:LayoutOverrides="TopPosition, BottomPosition" Height="520">
+        <StackPanel x:Name="ControlStack" Margin="217.25,150,50,50" Orientation="Vertical" Width="400" Height="520" Grid.Column="1">
             <StackPanel x:Name="InfoStack" Margin="0" Orientation="Vertical" Height="350" Width="400">
                 <StackPanel x:Name="SubtotalStack" Orientation="Horizontal" Height="50" d:LayoutOverrides="HorizontalAlignment">
                     <TextBlock x:Name="SalesPriceBlock" Margin="0" TextWrapping="Wrap" Text="Sub Total" Height="50" Width="200"/>
@@ -76,7 +80,7 @@
             </StackPanel>
         </StackPanel>
 
-        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="0" Width="120" IsActive="{Binding LoadingIcon}"/>
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="580,300" Width="120" IsActive="{Binding LoadingIcon}" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Page>
