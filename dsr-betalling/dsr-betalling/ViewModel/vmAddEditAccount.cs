@@ -32,6 +32,7 @@ namespace dsr_betalling.ViewModel
         public int Id { get; set; }
         public string AccountHolderName { get; set; }
         public float Balance { get; set; }
+        public float Funds { get; set; }
 
         public bool LoadingIcon
         {
@@ -47,14 +48,19 @@ namespace dsr_betalling.ViewModel
         public ICommand UpdateAccountCommand { get; set; }
         public ICommand AddChipCommand { get; set; }
         public ICommand DeleteChipCommand { get; set; }
+        public ICommand AddFundsCommand { get; set; }
 
         public vmAddEditAccount()
         {
-            //AddAccount
             ChipObservableCollection = new ObservableCollection<Chip>();
 
-            //EditAccount
+            //Only for EditAccount
             Populate();
+        }
+
+        public async void AddFunds(float funds)
+        {
+            // point to handler which have the add funds method.
         }
 
         //AddAccount
