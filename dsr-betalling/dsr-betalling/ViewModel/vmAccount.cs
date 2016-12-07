@@ -14,7 +14,7 @@ using dsr_betalling.Model;
 
 namespace dsr_betalling.ViewModel
 {
-    class vmAccount : INotifyPropertyChanged
+    public class vmAccount : INotifyPropertyChanged
     {
         private ObservableCollection<Account> _accountObservableCollection;
         private bool _loadingIcon;
@@ -46,8 +46,8 @@ namespace dsr_betalling.ViewModel
 
         public vmAccount()
         {
-            Populate();
             AccountObservableCollection = new ObservableCollection<Account>();
+            Populate();
 
             DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
@@ -61,7 +61,6 @@ namespace dsr_betalling.ViewModel
                 AccountObservableCollection.RemoveAt(SelectedIndex);
             // await AccountHandler.DeleteAccountAsync(Int32.Parse(SelectedIndex.ToString(AccountId.ToString())));
         }
-
 
         /// <summary>
         /// Populates a list when page in loaded.

@@ -8,7 +8,6 @@
     xmlns:ViewModel="using:dsr_betalling.ViewModel"
     x:Class="dsr_betalling.view.AccountManager"
     mc:Ignorable="d">
-
     <Page.DataContext>
         <ViewModel:vmAccount/>
     </Page.DataContext>
