@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using dsr_betalling.Annotations;
+using dsr_betalling.Common;
 using dsr_betalling.Handler;
 
 namespace dsr_betalling.ViewModel
@@ -31,7 +32,7 @@ namespace dsr_betalling.ViewModel
 
         public vmAccess()
         {
-            
+           LogiCommand = new RelayCommand(Login);
         }
     
         public void Login()
