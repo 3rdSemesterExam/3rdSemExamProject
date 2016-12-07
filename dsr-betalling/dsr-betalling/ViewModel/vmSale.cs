@@ -86,9 +86,10 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        public void MakePurchase()
+        public async void MakePurchase()
         {
-            // PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
+            await ChipHandler.GetAccountIdFromChipId(ChipId);
+            //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
         }
 
         #region PropertyChangedSupport
