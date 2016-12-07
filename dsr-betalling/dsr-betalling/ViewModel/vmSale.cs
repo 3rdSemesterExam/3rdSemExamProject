@@ -21,6 +21,9 @@ namespace dsr_betalling.ViewModel
         private ObservableCollection<Product> _productList;
         private bool _loadingIcon;
 
+        /// <summary>
+        /// Is binded to ProductsListView
+        /// </summary>
         public ObservableCollection<Product> ProductList
         {
             get { return _productList; }
@@ -31,6 +34,9 @@ namespace dsr_betalling.ViewModel
             }
         }
 
+        /// <summary>
+        /// Is binded to OrderedListView
+        /// </summary>
         public ObservableCollection<PurchaseItems> PurchaseItems
         {
             get { return _purchaseItems; }
@@ -85,6 +91,7 @@ namespace dsr_betalling.ViewModel
                 LoadingIcon = false;
             }
         }
+
 
         public async void MakePurchase()
         {
