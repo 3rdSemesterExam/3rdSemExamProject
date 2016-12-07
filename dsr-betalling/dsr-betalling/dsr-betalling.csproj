@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModel\vmAddEditAccount.cs" />
     <Compile Include="view\AccountManager.xaml.cs">
       <DependentUpon>AccountManager.xaml</DependentUpon>
     </Compile>
