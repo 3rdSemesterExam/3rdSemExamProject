@@ -30,7 +30,10 @@ namespace dsr_betalling.ViewModel
         }
 
         public int Id { get; set; }
-        public string AccountHolderName { get; set; }
+
+        //NOTE: AccountHolderName is splitted into FirstName and LastName
+        public string AccountHolderFirstName { get; set; }
+        public string AccountHolderLastName { get; set; }
         public float Balance { get; set; }
         public float Funds { get; set; }
 
@@ -66,13 +69,13 @@ namespace dsr_betalling.ViewModel
         //AddAccount
         public async void AddAccount()
         {
-            await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
+            //await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
         }
 
         //EditAccount
         public async void EditAccount()
         {
-            await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderName, Balance));
+            //await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
         }
 
         /// <summary>
