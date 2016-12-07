@@ -18,6 +18,11 @@ namespace dsr_betalling.ViewModel
     {
         private bool _loadingIcon;
         private ObservableCollection<Chip> _chipObservableCollection;
+        private float _balance;
+        private float _funds;
+        private string _chipId;
+        private string _accountHolderLastName;
+        private string _accountHolderFirstName;
 
         public ObservableCollection<Chip> ChipObservableCollection
         {
@@ -31,11 +36,38 @@ namespace dsr_betalling.ViewModel
 
         public int Id { get; set; }
 
-        //NOTE: AccountHolderName is splitted into FirstName and LastName
-        public string AccountHolderFirstName { get; set; }
-        public string AccountHolderLastName { get; set; }
-        public float Balance { get; set; }
-        public float Funds { get; set; }
+        //NOTE: AccountHolderName is split into FirstName and LastName
+        public string AccountHolderFirstName
+        {
+            get { return _accountHolderFirstName; }
+            set { _accountHolderFirstName = value; OnPropertyChanged(); }
+        }
+
+        public string AccountHolderLastName
+        {
+            get { return _accountHolderLastName; }
+            set { _accountHolderLastName = value; OnPropertyChanged(); }
+        }
+
+        public string ChipId
+        {
+            get { return _chipId; }
+            set { _chipId = value; OnPropertyChanged(); }
+        }
+
+        public float Balance
+        {
+            get { return _balance; }
+            set { _balance = value; OnPropertyChanged(); }
+        }
+
+        public float Funds
+        {
+            get { return _funds; }
+            set { _funds = value; OnPropertyChanged(); }
+        }
+        public int Fk_Account { get; set; }
+        public int SelectedIndex { get; set; }
 
         public bool LoadingIcon
         {
@@ -67,7 +99,7 @@ namespace dsr_betalling.ViewModel
         }
 
         //AddAccount
-        //NOTE: AccountHolderName is splitted into FirstName and LastName
+        //NOTE: AccountHolderName is split into FirstName and LastName
         public async void AddAccount()
         {
 
@@ -75,11 +107,25 @@ namespace dsr_betalling.ViewModel
         }
 
         //EditAccount
-        //NOTE: AccountHolderName is splitted into FirstName and LastName
+        //NOTE: AccountHolderName is split into FirstName and LastName
         public async void EditAccount()
         {
             //await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
         }
+
+        public async void AddChip()
+        {
+            await ChipHandler.AddChipToAccountAsync(ChipId, Fk_Account);
+        }
+
+        public async void DeleteChip()
+        {
+            if (SelectedIndex > -1)
+                ChipObservableCollection.RemoveAt(SelectedIndex);
+            await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
+        }
+
+        
 
         /// <summary>
         /// Populates a list when page in loaded.
