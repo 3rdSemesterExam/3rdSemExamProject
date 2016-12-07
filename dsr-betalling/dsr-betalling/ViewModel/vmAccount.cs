@@ -28,7 +28,7 @@ namespace dsr_betalling.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
@@ -40,33 +40,37 @@ namespace dsr_betalling.ViewModel
         }
 
         public int SelectedIndex { get; set; }
+        public int AccountId { get; set; }
 
         public ICommand DeleteAccountCommand { get; set; }
-        
+
         public vmAccount()
         {
             Populate();
             AccountObservableCollection = new ObservableCollection<Account>();
 
-            DeleteAccountCommand = new RelayCommand();
+            DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
 
-        public async void RemoveAccount(int accountId)
+        /// <summary>
+        /// The last line in this method might get some serious refactoring
+        /// </summary>
+        public async void RemoveAccount()
         {
             if (SelectedIndex > -1)
                 AccountObservableCollection.RemoveAt(SelectedIndex);
-            await AccountHandler.DeleteAccountAsync(SelectedIndex);
+            // await AccountHandler.DeleteAccountAsync(Int32.Parse(SelectedIndex.ToString(AccountId.ToString())));
         }
-   
+
 
         /// <summary>
         /// Populates a list when page in loaded.
         /// </summary>
-        private async void Populate()
+        private void Populate()
         {
             try
             {
-               LoadingIcon = true;
+                LoadingIcon = true;
                 //var listOfAccounts = await Facade.GetListAsync(new Account());
                 var listOfAccounts = AccountObservableCollection;
                 foreach (var account in listOfAccounts)
@@ -83,6 +87,7 @@ namespace dsr_betalling.ViewModel
                 LoadingIcon = false;
             }
         }
+
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
 
