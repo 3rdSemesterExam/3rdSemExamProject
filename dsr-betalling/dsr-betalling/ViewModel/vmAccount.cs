@@ -43,12 +43,10 @@ namespace dsr_betalling.ViewModel
         
         public vmAccount()
         {
-            //AccountManager
             Populate();
             AccountObservableCollection = new ObservableCollection<Account>();
         }
 
-        // AccountManager
         public async void RemoveAccount(int accountId)
         {
             await AccountHandler.DeleteAccountAsync(accountId);
