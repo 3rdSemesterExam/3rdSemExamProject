@@ -18,8 +18,6 @@ namespace dsr_betalling.ViewModel
     {
         private ObservableCollection<Account> _accountObservableCollection;
         private bool _loadingIcon;
-        private ObservableCollection<Chip> _chipObservableCollection;
-
 
         public ObservableCollection<Account> AccountObservableCollection
         {
@@ -30,21 +28,7 @@ namespace dsr_betalling.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        public ObservableCollection<Chip> ChipObservableCollection
-        {
-            get { return _chipObservableCollection; }
-            set
-            {
-                _chipObservableCollection = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int Id { get; set; }
-        public string AccountHolderName { get; set; }
-        public float Balance { get; set; }
-
+        
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
@@ -55,25 +39,13 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        public ICommand AddAccountCommand { get; set; }
         public ICommand DeleteAccountCommand { get; set; }
-        public ICommand UpdateAccountCommand { get; set; }
-        public ICommand AddChipCommand { get; set; }
-        public ICommand DeleteChipcomand { get; set; }
-        //
-
-
+        
         public vmAccount()
         {
             //AccountManager
-            AccountObservableCollection = new ObservableCollection<Account>();
-
-            //AddAccount
-            ChipObservableCollection = new ObservableCollection<Chip>();
-
-
-            //EditAccount
             Populate();
+            AccountObservableCollection = new ObservableCollection<Account>();
         }
 
         // AccountManager
@@ -82,26 +54,17 @@ namespace dsr_betalling.ViewModel
             await AccountHandler.DeleteAccountAsync(accountId);
         }
 
-        //AddAccount
-        public async void AddAccount()
-        {
-            await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
-        }
-
-        //EditAccount
-        public async void EditAccount()
-        {
-            await AccountHandler.UpdateAccountAsync(new Account(Id, AccountHolderName, Balance));
-        }
-
+        /// <summary>
+        /// Populates a list when page in loaded.
+        /// </summary>
         private async void Populate()
         {
             try
             {
                 LoadingIcon = true;
-                //var listOfProducts = await Facade.GetListAsync(new Product());
-                var listOfProducts = AccountObservableCollection;
-                foreach (var account in listOfProducts)
+                var listOfAccounts = await Facade.GetListAsync(new Account());
+                //var listOfAccounts = AccountObservableCollection;
+                foreach (var account in listOfAccounts)
                 {
                     AccountObservableCollection.Add(account);
                 }
