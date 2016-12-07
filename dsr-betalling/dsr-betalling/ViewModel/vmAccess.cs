@@ -16,7 +16,7 @@ namespace dsr_betalling.ViewModel
     {
         private string _username;
         private string _password;
-        public ICommand LogiCommand { get; set; }
+        public ICommand LoginCommand { get; set; }
 
         public string Username
         {
@@ -32,7 +32,7 @@ namespace dsr_betalling.ViewModel
 
         public vmAccess()
         {
-           LogiCommand = new RelayCommand(Login);
+           LoginCommand = new RelayCommand(Login);
         }
     
         public void Login()
