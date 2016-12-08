@@ -25,7 +25,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
-        public async Task<bool> CreateAccount(Account account)
+        public static async Task<bool> CreateAccount(Account account)
         {
             return await Facade.PostAsync(account);
         }

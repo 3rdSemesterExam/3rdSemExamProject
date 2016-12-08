@@ -118,7 +118,7 @@ namespace dsr_betalling.ViewModel
         //NOTE: AccountHolderName is split into FirstName and LastName
         public async void AddAccount()
         {
-            await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
+            await AccountHandler.CreateAccount(new Account(Id, AccountHolderName, Balance));
         }
 
         //EditAccount
