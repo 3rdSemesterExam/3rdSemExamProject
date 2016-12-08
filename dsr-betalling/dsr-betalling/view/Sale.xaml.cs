@@ -31,7 +31,7 @@ namespace dsr_betalling.view
         {
             this.InitializeComponent();
         }
-      
+
         private async void PurchaseButton_Click(object sender, RoutedEventArgs e)
         {
             PurchaseButton.Visibility = Visibility.Collapsed;
@@ -60,10 +60,14 @@ namespace dsr_betalling.view
 
         private void ProductListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            foreach (var item in ProductListView.SelectedItems)
-            {
-                OrderedListView.Items?.Add(item.ToString());
-            }
+            var vievmodel = (vmSale)DataContext;
+            if (vievmodel.MoveItemCommand.CanExecute(null))
+                vievmodel.MoveItemCommand.Execute(null);
+
+            //foreach (var item in ProductListView.SelectedItems)
+            //{
+            //    OrderedListView.Items?.Add(item.ToString());
+            //}
         }
 
         private void OrderedListView_OnDoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
