@@ -130,10 +130,8 @@ namespace dsr_betalling.ViewModel
         {
             if (SelectedIndex > -1)
                 ChipObservableCollection.RemoveAt(SelectedIndex);
-            await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
+           // await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
         }
-
-
 
         /// <summary>
         /// Populates a list when page in loaded.
