@@ -3,7 +3,7 @@ using dsr_betalling.Interface;
 
 namespace dsr_betalling.Model
 {
-    class ActivityLog : IWebUri
+    public class ActivityLog : IWebUri
     {
         public int Id { get; }
         public int FK_Actvity { get; }

@@ -2,7 +2,7 @@
 
 namespace dsr_betalling.Model
 {
-    class Activity : IWebUri
+    public class Activity : IWebUri
     {
         public int Id { get; }
         public string Title { get; set; }

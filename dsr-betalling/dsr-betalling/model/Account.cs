@@ -47,6 +47,5 @@ namespace dsr_betalling.Model
         {
             return Balance;
         }
-
     }
 }

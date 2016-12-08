@@ -120,6 +120,33 @@ namespace dsr_betalling.Common
             }
         }
 
+        public static async Task<string> PostScalarAsync<T>(T obj) where T : IWebUri
+        {
+            if (IsNullOrEmpty(Token)) return "-1";
+            var handler = new HttpClientHandler { UseDefaultCredentials = true };
+            using (var client = new HttpClient(handler))
+            {
+                client.BaseAddress = new Uri(ServerUrl);
+                client.DefaultRequestHeaders.Clear();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                try
+                {
+                    var response = await client.PostAsJsonAsync(ApiBaseUrl + obj.ResourceUri, obj);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        throw new HttpErrorException("HTTP Error\n" + obj.VerboseName + ": " + response.ReasonPhrase);
+                    }
+                    return response.ToString();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+
         /// <summary>
         /// Updates an Object in the Webservice, serialized as JSON, by Id
         /// </summary>
@@ -271,7 +298,7 @@ namespace dsr_betalling.Common
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public static async Task<bool> DoCreateUser(string email, string username, string password)
+        public static async Task<bool> DoCreateUser(string username, string password)
         {
             if (IsNullOrEmpty(Token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
@@ -283,8 +310,7 @@ namespace dsr_betalling.Common
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var kvp = new List<KeyValuePair<string, string>>
                         {
-                            new KeyValuePair<string, string>( "Email", email ),
-                            new KeyValuePair<string, string>( "Username", username ),
+                            new KeyValuePair<string, string>( "Email", username ),
                             new KeyValuePair<string, string>( "Password", password ),
                             new KeyValuePair<string, string>( "ConfirmPassword", password )
                         };
@@ -302,6 +328,13 @@ namespace dsr_betalling.Common
                     throw;
                 }
             }
+        }
+
+        public static bool DoLogout()
+        {
+            if (IsNullOrEmpty(Token)) return false;
+            Token = null;
+            return true;
         }
     }
 }

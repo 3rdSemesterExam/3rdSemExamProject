@@ -2,7 +2,7 @@
 
 namespace dsr_betalling.Model
 {
-   public class Chip : IWebUri
+    public class Chip : IWebUri
     {
         public int Id { get; }
         public string ChipId { get; set; }
