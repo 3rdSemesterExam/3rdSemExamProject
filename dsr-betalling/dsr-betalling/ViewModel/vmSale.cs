@@ -23,7 +23,7 @@ namespace dsr_betalling.ViewModel
         private bool _loadingIcon;
 
         /// <summary>
-        /// Is binded to ProductsListView
+        /// Is bound to ProductsListView
         /// </summary>
         public ObservableCollection<Product> ProductList
         {
@@ -36,7 +36,7 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Is binded to OrderedListView
+        /// Is bound to OrderedListView
         /// </summary>
         public ObservableCollection<PurchaseItems> PurchaseItems
         {
