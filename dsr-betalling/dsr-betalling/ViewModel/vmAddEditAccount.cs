@@ -37,16 +37,10 @@ namespace dsr_betalling.ViewModel
         public int Id { get; set; }
 
         //NOTE: AccountHolderName is split into FirstName and LastName
-        public string AccountHolderFirstName
+        public string AccountHolderName
         {
             get { return _accountHolderFirstName; }
             set { _accountHolderFirstName = value; OnPropertyChanged(); }
-        }
-
-        public string AccountHolderLastName
-        {
-            get { return _accountHolderLastName; }
-            set { _accountHolderLastName = value; OnPropertyChanged(); }
         }
 
         public string ChipId
@@ -88,8 +82,10 @@ namespace dsr_betalling.ViewModel
         public vmAddEditAccount()
         {
             ChipObservableCollection = new ObservableCollection<Chip>();
-            //Only for EditAccount
+
+            //Populate is only for EditAccount
             Populate();
+
             AddAccountCommand = new RelayCommand(AddAccount);
             UpdateAccountCommand = new RelayCommand(EditAccount);
             AddChipCommand = new RelayCommand(AddChip);
@@ -110,8 +106,7 @@ namespace dsr_betalling.ViewModel
         //NOTE: AccountHolderName is split into FirstName and LastName
         public async void AddAccount()
         {
-
-            //await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderFirstName, AccountHolderLastName, Balance));
+            await AccountHandler.CreateAccountAsync(new Account(Id, AccountHolderName, Balance));
         }
 
         //EditAccount
@@ -123,6 +118,7 @@ namespace dsr_betalling.ViewModel
 
         public async void AddChip()
         {
+            ChipObservableCollection.Add(new Chip());
             await ChipHandler.AddChipToAccountAsync(ChipId, Fk_Account);
         }
 
@@ -130,7 +126,7 @@ namespace dsr_betalling.ViewModel
         {
             if (SelectedIndex > -1)
                 ChipObservableCollection.RemoveAt(SelectedIndex);
-           // await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
+            await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
         }
 
         /// <summary>
