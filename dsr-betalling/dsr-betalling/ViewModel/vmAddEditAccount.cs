@@ -21,7 +21,6 @@ namespace dsr_betalling.ViewModel
         private float _balance;
         private float _funds;
         private string _chipId;
-        private string _accountHolderLastName;
         private string _accountHolderFirstName;
         private ObservableCollection<Purchase> _orderHistoryObservableCollection;
 

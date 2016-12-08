@@ -68,20 +68,18 @@ namespace dsr_betalling.ViewModel
             AccountObservableCollection.Add(new Account());
             AccountObservableCollection.Add(new Account());
 
-      
-
-            //DeleteAccountCommand = new RelayCommand(RemoveAccount);
+            DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
 
         /// <summary>
         /// The last line in this method might get some serious refactoring
         /// </summary>
-        //public async void RemoveAccount()
-        //{
-        //    if (SelectedIndex > -1)
-        //        AccountObservableCollection.RemoveAt(SelectedIndex);
-        //    await AccountHandler.DeleteAccountAsync(Int32.Parse(SelectedIndex.ToString(AccountId.ToString())));
-        //}
+        public async void RemoveAccount()
+        {
+            if (SelectedIndex > -1)
+                AccountObservableCollection.RemoveAt(SelectedIndex);
+            await AccountHandler.DeleteAccount(AccountId);
+        }
 
         /// <summary>
         /// Populates a list when page in loaded.

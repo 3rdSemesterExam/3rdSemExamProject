@@ -18,10 +18,9 @@ namespace dsr_betalling.ViewModel
 {
     class vmSale : INotifyPropertyChanged
     {
-        private ObservableCollection<PurchaseItem> _purchaseItems;
         private ObservableCollection<Product> _productList;
-        private bool _loadingIcon;
         private ObservableCollection<PurchaseItem> _purchaseItemObservableCollection;
+        private bool _loadingIcon;
 
         /// <summary>
         /// Is bound to ProductsListView

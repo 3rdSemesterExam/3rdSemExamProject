@@ -45,7 +45,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Boolean</returns>
-        public async Task<bool> DeleteAccount(int accountId)
+        public static async Task<bool> DeleteAccount(int accountId)
         {
             return await Facade.DeleteAsync(new Account(), accountId);
         }
