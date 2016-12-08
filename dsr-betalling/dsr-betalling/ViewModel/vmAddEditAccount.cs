@@ -101,8 +101,8 @@ namespace dsr_betalling.ViewModel
 
             OrderHistoryObservableCollection = new ObservableCollection<Purchase>();
 
-            OrderHistoryObservableCollection.Add(new Purchase());
-            OrderHistoryObservableCollection.Add(new Purchase());
+            OrderHistoryObservableCollection.Add(new Purchase(1, 1, 500, DateTime.Now));
+            OrderHistoryObservableCollection.Add(new Purchase(2, 1, 20, DateTime.Now));
 
             ChipObservableCollection.Add(new Chip());
             ChipObservableCollection.Add(new Chip());
