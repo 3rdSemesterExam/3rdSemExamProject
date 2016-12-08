@@ -70,7 +70,11 @@
 
         </StackPanel>
         <StackPanel x:Name="OrderHistoryStack" HorizontalAlignment="Left" Margin="50,0,0,45" Orientation="Vertical" VerticalAlignment="Bottom" Width="376" Height="290">
-            <ListView x:Name="OrderHistoryListView" Height="289" Header="Order History" FontSize="21.333" Background="#33000000"/>
+            <ListView x:Name="OrderHistoryListView" Height="289" Header="Order History" FontSize="21.333" Background="#33000000" ItemsSource="{Binding OrderHistoryObservableCollectiol}">
+                <ListView.DataContext>
+                    <ViewModel:vmAddEditAccount/>
+                </ListView.DataContext>
+            </ListView>
 
         </StackPanel>
 

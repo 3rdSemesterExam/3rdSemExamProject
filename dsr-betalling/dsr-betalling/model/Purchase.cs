@@ -3,7 +3,7 @@ using dsr_betalling.Interface;
 
 namespace dsr_betalling.Model
 {
-    class Purchase:IWebUri
+    public class Purchase:IWebUri
     {
         public int Id { get; set; }
         public int FK_Account { get; set; }
