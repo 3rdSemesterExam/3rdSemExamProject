@@ -38,7 +38,7 @@
 
         </StackPanel>
         <StackPanel x:Name="ChipStack" Margin="0,105,0,0" Orientation="Vertical" Height="525" Width="360" d:LayoutOverrides="TopPosition, BottomPosition">
-            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000" ItemsSource="{Binding ChipObservableCollection}"/>
+            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000" ItemsSource="{Binding ChipObservableCollection}" SelectedIndex="{Binding SelectedIndex}"/>
             <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0" Click="AddChipButton_Click">
                 <Interactivity:Interaction.Behaviors>
                     <Core:EventTriggerBehavior EventName="Click">
