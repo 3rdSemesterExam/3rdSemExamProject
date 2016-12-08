@@ -18,9 +18,10 @@ namespace dsr_betalling.ViewModel
 {
     class vmSale : INotifyPropertyChanged
     {
-        private ObservableCollection<PurchaseItems> _purchaseItems;
+        private ObservableCollection<PurchaseItem> _purchaseItems;
         private ObservableCollection<Product> _productList;
         private bool _loadingIcon;
+        private ObservableCollection<PurchaseItem> _purchaseItemObservableCollection;
 
         /// <summary>
         /// Is bound to ProductsListView
@@ -38,14 +39,10 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Is bound to OrderedListView
         /// </summary>
-        public ObservableCollection<PurchaseItems> PurchaseItems
+        public ObservableCollection<PurchaseItem> PurchaseItemObservableCollection
         {
-            get { return _purchaseItems; }
-            set
-            {
-                _purchaseItems = value;
-                OnPropertyChanged();
-            }
+            get { return _purchaseItemObservableCollection; }
+            set { _purchaseItemObservableCollection = value; OnPropertyChanged(); }
         }
 
         public float Discount { get; set; }
@@ -65,7 +62,7 @@ namespace dsr_betalling.ViewModel
         public vmSale()
         {
             ProductList = new ObservableCollection<Product>();
-            PurchaseItems = new ObservableCollection<PurchaseItems>();
+            PurchaseItemObservableCollection = new ObservableCollection<PurchaseItem>();
             PopulateListOfProducts();
 
             ProductList.Add(new Product());
@@ -107,10 +104,10 @@ namespace dsr_betalling.ViewModel
             {
                 LoadingIcon = true;
                 //var listOfProducts = await Facade.GetListAsync(new Product());
-                var listOfPurchases = PurchaseItems;
+                var listOfPurchases = PurchaseItemObservableCollection;
                 foreach (var product in listOfPurchases)
                 {
-                    PurchaseItems.Add(product);
+                    //PurchaseItem.Add(product);
                 }
             }
             catch (Exception ex)
@@ -125,7 +122,7 @@ namespace dsr_betalling.ViewModel
 
         public async void MakePurchase()
         {
-            await ChipHandler.GetAccountIdFromChipId(ChipId);
+            ChipHandler.GetAccountIdFromChipId(ChipId);
             //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
         }
 
@@ -133,7 +130,7 @@ namespace dsr_betalling.ViewModel
         {
             if (SelectedIndex > -1)
                 ProductList.Add(new Product());
-                PopulateListOfPurchases();
+            PopulateListOfPurchases();
         }
         #region PropertyChangedSupport
         public event PropertyChangedEventHandler PropertyChanged;
