@@ -32,13 +32,14 @@ namespace dsr_betalling.ViewModel
 
         public vmAccess()
         {
-           LoginCommand = new RelayCommand(Login);
+           LoginCommand = new RelayCommand(DSRLogin);
         }
     
-        public void Login()
+        public void DSRLogin()
         {
-            
+            var result = AuthorizationHandler.DoLogin(Username, Password);
         }
+        
 
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
