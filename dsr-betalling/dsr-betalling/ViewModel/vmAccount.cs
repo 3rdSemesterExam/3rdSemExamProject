@@ -49,6 +49,7 @@ namespace dsr_betalling.ViewModel
             AccountObservableCollection = new ObservableCollection<Account>();
             Populate();
 
+            //Mock objects
             AccountObservableCollection.Add(new Account());
             AccountObservableCollection.Add(new Account());
             AccountObservableCollection.Add(new Account());
