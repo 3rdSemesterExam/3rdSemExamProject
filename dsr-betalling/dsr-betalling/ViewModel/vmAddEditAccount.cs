@@ -88,15 +88,17 @@ namespace dsr_betalling.ViewModel
         public vmAddEditAccount()
         {
             ChipObservableCollection = new ObservableCollection<Chip>();
-
+            //Only for EditAccount
+            Populate();
             AddAccountCommand = new RelayCommand(AddAccount);
             UpdateAccountCommand = new RelayCommand(EditAccount);
             AddChipCommand = new RelayCommand(AddChip);
             DeleteChipCommand = new RelayCommand(DeleteChip);
             //AddFundsCommand = new RelayCommand(AddFunds());
 
-            //Only for EditAccount
-            Populate();
+            ChipObservableCollection.Add(new Chip());
+            ChipObservableCollection.Add(new Chip());
+            ChipObservableCollection.Add(new Chip());
         }
 
         public async void AddFunds(float funds)
