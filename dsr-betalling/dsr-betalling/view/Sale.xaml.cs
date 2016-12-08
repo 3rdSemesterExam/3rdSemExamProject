@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 using dsr_betalling.Common;
+using dsr_betalling.ViewModel;
 
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -45,6 +46,9 @@ namespace dsr_betalling.view
 
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
+            var vievmodel = (vmSale)DataContext;
+            if (vievmodel.MakePurchaseCommand.CanExecute(null))
+                vievmodel.MakePurchaseCommand.Execute(null);
             PurchaseButton.Visibility = Visibility.Visible;
             ConfirmButton.Visibility = Visibility.Collapsed;
             ProductListView.IsEnabled = true;

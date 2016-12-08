@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using dsr_betalling.Common;
+using dsr_betalling.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,7 +31,11 @@ namespace dsr_betalling.view
 
         private void LogInButton_OnClick(object sender, RoutedEventArgs e)
         {
+            var vievmodel = (vmAccess)DataContext;
+            if (vievmodel.LoginCommand.CanExecute(null))
+                vievmodel.LoginCommand.Execute(null);
             NavigationHelper.Navigate(typeof(Sale));
+            
         }
     }
 }
