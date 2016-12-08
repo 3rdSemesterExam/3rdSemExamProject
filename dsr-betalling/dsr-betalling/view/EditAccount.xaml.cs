@@ -32,6 +32,9 @@ namespace dsr_betalling.view
 
         private async void AddChipButton_Click(object sender, RoutedEventArgs e)
         {
+            var vievmodel = (vmAddEditAccount)DataContext;
+            if (vievmodel.AddAccountCommand.CanExecute(null))
+                vievmodel.AddAccountCommand.Execute(null);
             var dialog = new MessageDialog("Chip added!");
             await dialog.ShowAsync();
         }
