@@ -50,6 +50,7 @@ namespace dsr_betalling.ViewModel
 
         public float Discount { get; set; }
         public string ChipId { get; set; }
+        public int SelectedIndex { get; set; }
 
         public bool LoadingIcon
         {
@@ -59,21 +60,26 @@ namespace dsr_betalling.ViewModel
 
         // PurchaseCommands
         public ICommand MakePurchaseCommand { get; set; }
+        public ICommand MoveItemCommand { get; set; }
 
         public vmSale()
         {
             ProductList = new ObservableCollection<Product>();
             PurchaseItems = new ObservableCollection<PurchaseItems>();
-            Populate();
+            PopulateListOfProducts();
+
+            ProductList.Add(new Product());
+            ProductList.Add(new Product());
             ProductList.Add(new Product());
 
             MakePurchaseCommand = new RelayCommand(MakePurchase);
+            MoveItemCommand = new RelayCommand(MoveItem);
         }
 
         /// <summary>
         /// Populates a list when page in loaded.
         /// </summary>
-        private async void Populate()
+        private async void PopulateListOfProducts()
         {
             try
             {
@@ -95,6 +101,27 @@ namespace dsr_betalling.ViewModel
             }
         }
 
+        private async void PopulateListOfPurchases()
+        {
+            try
+            {
+                LoadingIcon = true;
+                //var listOfProducts = await Facade.GetListAsync(new Product());
+                var listOfPurchases = PurchaseItems;
+                foreach (var product in listOfPurchases)
+                {
+                    PurchaseItems.Add(product);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                LoadingIcon = false;
+            }
+        }
 
         public async void MakePurchase()
         {
@@ -102,6 +129,12 @@ namespace dsr_betalling.ViewModel
             //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
         }
 
+        public void MoveItem()
+        {
+            if (SelectedIndex > -1)
+                ProductList.Add(new Product());
+                PopulateListOfPurchases();
+        }
         #region PropertyChangedSupport
         public event PropertyChangedEventHandler PropertyChanged;
 
