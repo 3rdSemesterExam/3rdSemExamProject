@@ -8,14 +8,14 @@ using dsr_betalling.Model;
 
 namespace dsr_betalling.Handler
 {
-    class AccountHandler
+    public class AccountHandler
     {
         /// <summary>
         /// Fetches an Account
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Account Object</returns>
-        public static async Task<Account> GetAccountAsync(int accountId)
+        public async Task<Account> GetAccount(int accountId)
         {
             return await Facade.GetAsync(new Account(), accountId);
         }
@@ -25,7 +25,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
-        public static async Task<bool> CreateAccountAsync(Account account)
+        public async Task<bool> CreateAccount(Account account)
         {
             return await Facade.PostAsync(account);
         }
@@ -35,7 +35,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
-        public static async Task<bool> UpdateAccountAsync(Account account)
+        public async Task<bool> UpdateAccount(Account account)
         {
             return await Facade.PutAsync(account, account.Id);
         }
@@ -45,7 +45,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Boolean</returns>
-        public static async Task<bool> DeleteAccountAsync(int accountId)
+        public async Task<bool> DeleteAccount(int accountId)
         {
             return await Facade.DeleteAsync(new Account(), accountId);
         }
