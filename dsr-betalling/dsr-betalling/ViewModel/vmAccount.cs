@@ -49,6 +49,10 @@ namespace dsr_betalling.ViewModel
             AccountObservableCollection = new ObservableCollection<Account>();
             Populate();
 
+            AccountObservableCollection.Add(new Account());
+            AccountObservableCollection.Add(new Account());
+            AccountObservableCollection.Add(new Account());
+
             DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
 
@@ -59,7 +63,7 @@ namespace dsr_betalling.ViewModel
         {
             if (SelectedIndex > -1)
                 AccountObservableCollection.RemoveAt(SelectedIndex);
-            // await AccountHandler.DeleteAccountAsync(Int32.Parse(SelectedIndex.ToString(AccountId.ToString())));
+            await AccountHandler.DeleteAccountAsync(Int32.Parse(SelectedIndex.ToString(AccountId.ToString())));
         }
 
         /// <summary>
