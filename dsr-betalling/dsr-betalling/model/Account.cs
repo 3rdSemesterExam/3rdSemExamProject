@@ -2,7 +2,7 @@
 
 namespace dsr_betalling.Model
 {
-    class Account : IWebUri
+    public class Account : IWebUri
     {
         public int Id { get; }
         public string AccountHolderName { get; set; }
@@ -47,6 +47,5 @@ namespace dsr_betalling.Model
         {
             return Balance;
         }
-
     }
 }

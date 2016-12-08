@@ -9,11 +9,11 @@ using dsr_betalling.Model;
 
 namespace dsr_betalling.Handler
 {
-    public static class ChipHandler
+    public class ChipHandler
     {
         private static IEnumerable<Chip> chipList;
 
-        public static async void UpdateChipList()
+        private static async void UpdateChipList()
         {
             chipList = await Facade.GetListAsync(new Chip());
         }

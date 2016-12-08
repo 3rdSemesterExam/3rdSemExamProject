@@ -2,11 +2,11 @@
 
 namespace dsr_betalling.Model
 {
-    class User : IWebUri
+    public class User : IWebUri
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Username { get; private set; }
+        public string Password { get; private set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 
