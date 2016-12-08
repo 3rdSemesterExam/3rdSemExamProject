@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 using dsr_betalling.Common;
+using dsr_betalling.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -31,6 +32,9 @@ namespace dsr_betalling.view
 
         private async void DeleteAccountButton_Click(object sender, RoutedEventArgs e)
         {
+            var vievmodel = (vmAccount)DataContext;
+            if (vievmodel.DeleteAccountCommand.CanExecute(null))
+                vievmodel.DeleteAccountCommand.Execute(null);
             var dialog = new MessageDialog("Account deleted!");
             await dialog.ShowAsync();
         }
