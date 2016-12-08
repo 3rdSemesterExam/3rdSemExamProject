@@ -75,13 +75,7 @@
             </StackPanel>
             <StackPanel x:Name="ButtonlStack" Orientation="Vertical" Width="200" Height="175" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height" Margin="100,0">
                 <Button x:Name="PurchaseButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Purchase" Visibility="Visible" Click="PurchaseButton_Click"/>
-                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click">
-                    <Interactivity:Interaction.Behaviors>
-                        <Core:EventTriggerBehavior EventName="Click">
-                            <Core:CallMethodAction TargetObject="{Binding MakePurchaseCommand}"/>
-                        </Core:EventTriggerBehavior>
-                    </Interactivity:Interaction.Behaviors>
-                </Button>
+                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click"/>
                 <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_OnClick"/>
             </StackPanel>
         </StackPanel>

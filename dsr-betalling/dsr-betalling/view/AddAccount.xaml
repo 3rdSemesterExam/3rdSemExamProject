@@ -39,20 +39,8 @@
         </StackPanel>
         <StackPanel x:Name="ChipStack" Margin="0,105,0,0" Orientation="Vertical" Height="525" Width="360" d:LayoutOverrides="TopPosition, BottomPosition">
             <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000" ItemsSource="{Binding ChipObservableCollection}"/>
-            <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0" Click="AddChipButton_Click">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:CallMethodAction TargetObject="{Binding AddChipCommand}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </Button>
-            <Button x:Name="DeleteChipButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" Margin="0,26,0,0" FontSize="36" Click="DeleteChipButton_Click">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:CallMethodAction TargetObject="{Binding DeleteChipCommand}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </Button>
+            <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0" Click="AddChipButton_Click"/>
+            <Button x:Name="DeleteChipButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" Margin="0,26,0,0" FontSize="36" Click="DeleteChipButton_Click"/>
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="895,500,185,45" Orientation="Vertical" Width="200" Height="175">
             <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click"/>
