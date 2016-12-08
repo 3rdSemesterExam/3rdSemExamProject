@@ -41,7 +41,11 @@ namespace dsr_betalling.ViewModel
         public ObservableCollection<PurchaseItem> PurchaseItemObservableCollection
         {
             get { return _purchaseItemObservableCollection; }
-            set { _purchaseItemObservableCollection = value; OnPropertyChanged(); }
+            set
+            {
+                _purchaseItemObservableCollection = value;
+                OnPropertyChanged();
+            }
         }
 
         public float Discount { get; set; }
@@ -51,7 +55,11 @@ namespace dsr_betalling.ViewModel
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
+            set
+            {
+                _loadingIcon = value;
+                OnPropertyChanged();
+            }
         }
 
         // PurchaseCommands
@@ -121,15 +129,37 @@ namespace dsr_betalling.ViewModel
 
         public async void MakePurchase()
         {
-            ChipHandler.GetAccountIdFromChipId(ChipId);
-            //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
+            try
+            {
+                var result = ChipHandler.GetAccountIdFromChipId(ChipId);
+                //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
+                
+            }
         }
 
+        //Will not work as intended
         public void MoveItem()
         {
-            if (SelectedIndex > -1)
-                ProductList.Add(new Product());
-            PopulateListOfPurchases();
+            try
+            {
+                if (SelectedIndex > -1)
+                {
+                    ProductList.Add(new Product());
+                    PopulateListOfPurchases();
+                }
+                else
+                {
+                    throw new ArgumentException("Failed moving item.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
+            }
         }
         #region PropertyChangedSupport
         public event PropertyChangedEventHandler PropertyChanged;

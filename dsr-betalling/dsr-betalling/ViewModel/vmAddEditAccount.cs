@@ -191,7 +191,7 @@ namespace dsr_betalling.ViewModel
                 {
                     if (SelectedIndex > -1)
                         ChipObservableCollection.RemoveAt(SelectedIndex);
-                    else 
+                    else
                         throw new ArgumentException("Failed deleting a chip.");
                 }
             }

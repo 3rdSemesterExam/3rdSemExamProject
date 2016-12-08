@@ -16,7 +16,7 @@ namespace dsr_betalling.ViewModel
 {
     public class vmAccount : INotifyPropertyChanged
     {
-        
+
         private ObservableCollection<Account> _accountObservableCollection;
         private bool _loadingIcon;
         private ObservableCollection<Account> _registeredAccountsCollection;
@@ -74,11 +74,25 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// The last line in this method might get some serious refactoring
         /// </summary>
-        public async void RemoveAccount()
+        public void RemoveAccount()
         {
-            if (SelectedIndex > -1)
-                AccountObservableCollection.RemoveAt(SelectedIndex);
-            await AccountHandler.DeleteAccount(AccountId);
+            try
+            {
+                var result = AccountHandler.DeleteAccount(AccountId).Result;
+                if (result)
+                {
+                    if (SelectedIndex > -1)
+                        AccountObservableCollection.RemoveAt(SelectedIndex);
+                }
+                else
+                {
+                    throw new ArgumentException("Failed to remove account.");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
+            }
         }
 
         /// <summary>

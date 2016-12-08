@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using dsr_betalling.Annotations;
 using dsr_betalling.Common;
@@ -21,25 +17,44 @@ namespace dsr_betalling.ViewModel
         public string Username
         {
             get { return _username; }
-            set { _username = value; OnPropertyChanged(); }
+            set
+            {
+                _username = value;
+                OnPropertyChanged();
+            }
         }
 
         public string Password
         {
             get { return _password; }
-            set { _password = value; OnPropertyChanged(); }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+            }
         }
 
         public vmAccess()
         {
-           LoginCommand = new RelayCommand(DSRLogin);
+            LoginCommand = new RelayCommand(DsrLogin);
         }
-    
-        public void DSRLogin()
+
+        public void DsrLogin()
         {
-            var result = AuthorizationHandler.DoLogin(Username, Password);
+            try
+            {
+                var result = AuthorizationHandler.DoLogin(Username, Password);
+                if (!result)
+                {
+                    throw new ArgumentException("Failed to log in");
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
+            }
         }
-        
+
 
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
