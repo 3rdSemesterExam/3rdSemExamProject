@@ -15,7 +15,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Account Object</returns>
-        public async Task<Account> GetAccount(int accountId)
+        public static async Task<Account> GetAccount(int accountId) // Er blevet lavet til Static
         {
             return await Facade.GetAsync(new Account(), accountId);
         }
@@ -35,7 +35,7 @@ namespace dsr_betalling.Handler
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
-        public async Task<bool> UpdateAccount(Account account)
+        public static async Task<bool> UpdateAccount(Account account) // Er blevet lavet til static
         {
             return await Facade.PutAsync(account, account.Id);
         }
