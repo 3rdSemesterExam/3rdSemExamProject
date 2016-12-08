@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 using dsr_betalling.Common;
+using dsr_betalling.ViewModel;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -37,6 +38,9 @@ namespace dsr_betalling.view
 
         private async void DeleteChipButton_Click(object sender, RoutedEventArgs e)
         {
+            var vievmodel = (vmAddEditAccount) DataContext;
+            if (vievmodel.DeleteChipCommand.CanExecute(null))
+                vievmodel.DeleteChipCommand.Execute(null);
             var dialog = new MessageDialog("Chip deleted!");
             await dialog.ShowAsync();
         }
