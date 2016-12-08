@@ -55,16 +55,34 @@
             </Button>
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="895,500,185,45" Orientation="Vertical" Width="200" Height="175">
-            <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click"/>
-            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_Click"/>
+            <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click"/>
+                </Interactivity:Interaction.Behaviors>
+            </Button>
+            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_Click">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click"/>
+                </Interactivity:Interaction.Behaviors>
+            </Button>
         </StackPanel>
         <StackPanel x:Name="BalanceStack" Orientation="Vertical" Width="300" Height="300" Margin="850,0,0,120">
             <TextBlock x:Name="BalanceBlock" TextWrapping="Wrap" Text="Current Balance" Height="50" FontSize="36" Margin="0,1,0,0"/>
 
             <TextBlock x:Name="CurrentBalanceBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,9,0" d:LayoutOverrides="Width, TopPosition, BottomPosition" Height="50" FontSize="36"/>
             <TextBlock x:Name="AddFundBlock" TextWrapping="Wrap" Text="Add funds" Height="50" FontSize="36" Margin="0,10,0,0"/>
-            <Button x:Name="AddFundsButton" Content="Add funds" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,10,6,0" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="56" FontSize="36"/>
+            <Button x:Name="AddFundsButton" Content="Add funds" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,10,6,0" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="56" FontSize="36">
+                <Interactivity:Interaction.Behaviors>
+                    <Core:EventTriggerBehavior EventName="Click">
+                        <Core:CallMethodAction TargetObject="{Binding AddFundsCommand}"/>
+                    </Core:EventTriggerBehavior>
+                </Interactivity:Interaction.Behaviors>
+            </Button>
             <TextBox x:Name="AddFundsTextBox" TextWrapping="Wrap" Text="" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="50" FontSize="36" Margin="0,10,0,0" PlaceholderText="Dkk"/>
+
+        </StackPanel>
+        <StackPanel x:Name="OrderHistoryStack" HorizontalAlignment="Left" Margin="50,0,0,45" Orientation="Vertical" VerticalAlignment="Bottom" Width="376" Height="290">
+            <ListView x:Name="OrderHistoryListView" Height="289" Header="Order History" FontSize="21.333" Background="#33000000"/>
 
         </StackPanel>
 
