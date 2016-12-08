@@ -16,8 +16,17 @@ namespace dsr_betalling.ViewModel
 {
     public class vmAccount : INotifyPropertyChanged
     {
+        
         private ObservableCollection<Account> _accountObservableCollection;
         private bool _loadingIcon;
+        private ObservableCollection<Account> _registeredAccountsCollection;
+
+
+        public ObservableCollection<Account> RegisteredAccountsCollection
+        {
+            get { return _registeredAccountsCollection; }
+            set { _registeredAccountsCollection = value; }
+        }
 
         public ObservableCollection<Account> AccountObservableCollection
         {
@@ -46,12 +55,20 @@ namespace dsr_betalling.ViewModel
 
         public vmAccount()
         {
+            RegisteredAccountsCollection = new ObservableCollection<Account>();
             AccountObservableCollection = new ObservableCollection<Account>();
             Populate();
+
+            RegisteredAccountsCollection.Add(new Account());
+            RegisteredAccountsCollection.Add(new Account());
+            RegisteredAccountsCollection.Add(new Account());
+            RegisteredAccountsCollection.Add(new Account());
 
             AccountObservableCollection.Add(new Account());
             AccountObservableCollection.Add(new Account());
             AccountObservableCollection.Add(new Account());
+
+      
 
             DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }

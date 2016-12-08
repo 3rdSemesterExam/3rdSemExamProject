@@ -47,7 +47,7 @@
         </Grid>
         <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="50,150,242.75,45" Orientation="Vertical" Width="320" Height="525">
             <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="5,0" DoubleTapped="ProductListView_OnDoubleTapped" Header="Products" ItemsSource="{Binding ProductList}">
-                <!--<ListViewItem Content="ListViewItem"/>-->
+                <ListViewItem Content="ListViewItem"/>
             </ListView>
             <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
         </StackPanel>

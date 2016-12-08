@@ -23,6 +23,13 @@ namespace dsr_betalling.ViewModel
         private string _chipId;
         private string _accountHolderLastName;
         private string _accountHolderFirstName;
+        private ObservableCollection<Purchase> _orderHistoryObservableCollectiol;
+
+        public ObservableCollection<Purchase> OrderHistoryObservableCollectiol
+        {
+            get { return _orderHistoryObservableCollectiol; }
+            set { _orderHistoryObservableCollectiol = value; OnPropertyChanged(); }
+        }
 
         public ObservableCollection<Chip> ChipObservableCollection
         {
@@ -95,6 +102,11 @@ namespace dsr_betalling.ViewModel
             AddChipCommand = new RelayCommand(AddChip);
             DeleteChipCommand = new RelayCommand(DeleteChip);
             //AddFundsCommand = new RelayCommand(AddFunds());
+
+            OrderHistoryObservableCollectiol = new ObservableCollection<Purchase>();
+
+            OrderHistoryObservableCollectiol.Add(new Purchase());
+            OrderHistoryObservableCollectiol.Add(new Purchase());
 
             ChipObservableCollection.Add(new Chip());
             ChipObservableCollection.Add(new Chip());
