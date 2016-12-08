@@ -17,7 +17,7 @@ namespace dsr_betalling.Common
     {
         private const string ServerUrl = "http://dsr-webservice.azurewebsites.net"; // HTTP URL of Server
         private const string ApiBaseUrl = "/api/"; // Base Directory of the Api (Remember Leading and Trailing "/")
-        private static string Token;
+        private static string _token;
 
         /// <summary>
         /// 
@@ -33,8 +33,8 @@ namespace dsr_betalling.Common
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                if (!IsNullOrEmpty(Token))
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                if (!IsNullOrEmpty(_token))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 try
                 {
                     var response = await client.GetAsync(ApiBaseUrl + obj.ResourceUri);
@@ -68,8 +68,8 @@ namespace dsr_betalling.Common
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                if (!IsNullOrEmpty(Token))
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                if (!IsNullOrEmpty(_token))
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
 
                 try
                 {
@@ -96,13 +96,13 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> PostAsync<T>(T obj) where T : IWebUri
         {
-            if (IsNullOrEmpty(Token)) return false;
+            if (IsNullOrEmpty(_token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -122,13 +122,13 @@ namespace dsr_betalling.Common
 
         public static async Task<string> PostScalarAsync<T>(T obj) where T : IWebUri
         {
-            if (IsNullOrEmpty(Token)) return "-1";
+            if (IsNullOrEmpty(_token)) return "-1";
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -156,13 +156,13 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> PutAsync<T>(T obj, int id) where T : IWebUri
         {
-            if (IsNullOrEmpty(Token)) return false;
+            if (IsNullOrEmpty(_token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -189,13 +189,13 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> DeleteAsync<T>(T obj, int id) where T : IWebUri
         {
-            if (IsNullOrEmpty(Token)) return false;
+            if (IsNullOrEmpty(_token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 try
                 {
@@ -233,16 +233,16 @@ namespace dsr_betalling.Common
                             new KeyValuePair<string, string> ( "password", password ),
                             new KeyValuePair<string, string>( "grant_type", "password" )
                         };
-                var EncodedContent = new FormUrlEncodedContent(kvp);
+                var encodedContent = new FormUrlEncodedContent(kvp);
                 try
                 {
-                    var response = await client.PostAsync("/token", EncodedContent);
+                    var response = await client.PostAsync("/token", encodedContent);
                     if (!response.IsSuccessStatusCode)
                     {
                         if (response.StatusCode == HttpStatusCode.Unauthorized) return false;
                         throw new HttpErrorException("HTTP Error\n" + "Login: " + response.ReasonPhrase);
                     }
-                    Token = (await response.Content.ReadAsStringAsync()).Split('"')[3];
+                    _token = (await response.Content.ReadAsStringAsync()).Split('"')[3];
                     return true;
                 }
                 catch (Exception)
@@ -260,13 +260,13 @@ namespace dsr_betalling.Common
         /// <returns></returns>
         public static async Task<bool> DoChangePasswordAsync(string oldPassword, string newPassword)
         {
-            if (IsNullOrEmpty(Token)) return false;
+            if (IsNullOrEmpty(_token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var kvp = new List<KeyValuePair<string, string>>
                         {
@@ -274,10 +274,10 @@ namespace dsr_betalling.Common
                             new KeyValuePair<string, string> ( "NewPassword", newPassword ),
                             new KeyValuePair<string, string>( "ConfirmPassword", newPassword )
                         };
-                var EncodedContent = JsonConvert.SerializeObject(kvp);
+                var encodedContent = JsonConvert.SerializeObject(kvp);
                 try
                 {
-                    var response = await client.PostAsJsonAsync("/api/Account/ChangePassword", EncodedContent);
+                    var response = await client.PostAsJsonAsync("/api/Account/ChangePassword", encodedContent);
                     if (response.IsSuccessStatusCode) return true;
                     if (response.StatusCode == HttpStatusCode.BadRequest &&
                         response.ReasonPhrase.Contains("The new password and confirmation password do not match."))
@@ -294,19 +294,18 @@ namespace dsr_betalling.Common
         /// <summary>
         /// Creates a User that can access the Authorized part of the Webservice
         /// </summary>
-        /// <param name="email"></param>
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
         public static async Task<bool> DoCreateUser(string username, string password)
         {
-            if (IsNullOrEmpty(Token)) return false;
+            if (IsNullOrEmpty(_token)) return false;
             var handler = new HttpClientHandler { UseDefaultCredentials = true };
             using (var client = new HttpClient(handler))
             {
                 client.BaseAddress = new Uri(ServerUrl);
                 client.DefaultRequestHeaders.Clear();
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _token);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var kvp = new List<KeyValuePair<string, string>>
                         {
@@ -314,10 +313,10 @@ namespace dsr_betalling.Common
                             new KeyValuePair<string, string>( "Password", password ),
                             new KeyValuePair<string, string>( "ConfirmPassword", password )
                         };
-                var EncodedContent = JsonConvert.SerializeObject(kvp);
+                var encodedContent = JsonConvert.SerializeObject(kvp);
                 try
                 {
-                    var response = await client.PostAsJsonAsync("/api/Account/Register", EncodedContent);
+                    var response = await client.PostAsJsonAsync("/api/Account/Register", encodedContent);
                     if (response.IsSuccessStatusCode) return true;
                     if (response.StatusCode == HttpStatusCode.BadRequest)
                         return false;
@@ -332,8 +331,8 @@ namespace dsr_betalling.Common
 
         public static bool DoLogout()
         {
-            if (IsNullOrEmpty(Token)) return false;
-            Token = null;
+            if (IsNullOrEmpty(_token)) return false;
+            _token = null;
             return true;
         }
     }

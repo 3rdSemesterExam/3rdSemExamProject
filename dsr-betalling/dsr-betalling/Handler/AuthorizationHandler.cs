@@ -9,7 +9,7 @@ namespace dsr_betalling.Handler
 {
     public class AuthorizationHandler
     {
-        public bool DoLogin(string username, string password)
+        public static bool DoLogin(string username, string password)
         {
             var result = Facade.DoLoginAsync(username, password).Result;
             Authorization.UpdateUserList();
@@ -17,7 +17,7 @@ namespace dsr_betalling.Handler
             return result;
         }
 
-        public bool DoLogout()
+        public static bool DoLogout()
         {
             var result = Facade.DoLogout();
             Authorization.Clear();
