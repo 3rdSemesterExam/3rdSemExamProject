@@ -28,11 +28,7 @@ namespace dsr_betalling.ViewModel
         public ObservableCollection<Product> ProductList
         {
             get { return _productList; }
-            set
-            {
-                _productList = value;
-                OnPropertyChanged();
-            }
+            set { _productList = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -41,11 +37,7 @@ namespace dsr_betalling.ViewModel
         public ObservableCollection<PurchaseItem> PurchaseItemObservableCollection
         {
             get { return _purchaseItemObservableCollection; }
-            set
-            {
-                _purchaseItemObservableCollection = value;
-                OnPropertyChanged();
-            }
+            set { _purchaseItemObservableCollection = value; OnPropertyChanged(); }
         }
 
         public float Discount { get; set; }
@@ -55,11 +47,7 @@ namespace dsr_betalling.ViewModel
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set
-            {
-                _loadingIcon = value;
-                OnPropertyChanged();
-            }
+            set { _loadingIcon = value; OnPropertyChanged(); }
         }
 
         // PurchaseCommands
@@ -69,7 +57,6 @@ namespace dsr_betalling.ViewModel
         public vmSale()
         {
             ProductList = new ObservableCollection<Product>();
-            PurchaseItemObservableCollection = new ObservableCollection<PurchaseItem>();
             PopulateListOfProducts();
 
             ProductList.Add(new Product());
@@ -105,28 +92,9 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        private async void PopulateListOfPurchases()
-        {
-            try
-            {
-                LoadingIcon = true;
-                var listOfPurchaseItems = await Facade.GetListAsync(new PurchaseItem());
-                //var listOfPurchases = PurchaseItemObservableCollection;
-                foreach (var product in listOfPurchaseItems)
-                {
-                    //PurchaseItem.Add(product);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            finally
-            {
-                LoadingIcon = false;
-            }
-        }
-
+        /// <summary>
+        /// Gets AccountId from chip. Verifies if account have funds registered. Adds purchase to purchase history
+        /// </summary>
         public void MakePurchase()
         {
             try
@@ -141,6 +109,9 @@ namespace dsr_betalling.ViewModel
         }
 
         //Will not work as intended
+        /// <summary>
+        /// Adds a selected item from the ProductsList to the OrderedList
+        /// </summary>
         public void MoveItem()
         {
             try
@@ -148,7 +119,6 @@ namespace dsr_betalling.ViewModel
                 if (SelectedIndex > -1)
                 {
                     ProductList.Add(new Product());
-                    PopulateListOfPurchases();
                 }
                 else
                 {
