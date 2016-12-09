@@ -8,33 +8,42 @@ using dsr_betalling.Handler;
 
 namespace dsr_betalling.ViewModel
 {
-    class vmAccess : INotifyPropertyChanged
+    public class vmAccess : INotifyPropertyChanged
     {
-        private string _username;
         private string _password;
-        public ICommand LoginCommand { get; set; }
-
-        public string Username
-        {
-            get { return _username; }
-            set { _username = value; OnPropertyChanged(); }
-        }
-
-        public string Password
-        {
-            get { return _password; }
-            set { _password = value; OnPropertyChanged(); }
-        }
+        private string _username;
 
         public vmAccess()
         {
             LoginCommand = new RelayCommand(DsrLogin);
         }
 
+        public ICommand LoginCommand { get; private set; }
+
+        public string Username
+        {
+            get { return _username; }
+            set
+            {
+                _username = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Password
+        {
+            get { return _password; }
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+            }
+        }
+        
         /// <summary>
-        /// Sends Username and Password to AuthorizationHandler.
+        ///     Sends Username and Password to AuthorizationHandler.
         /// </summary>
-        public async void DsrLogin()
+        private async void DsrLogin()
         {
             try
             {
@@ -47,13 +56,16 @@ namespace dsr_betalling.ViewModel
                 ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
-        #region MyRegion
+
+        #region NotifyPropertyChangedSupport
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
             #endregion
         }
     }

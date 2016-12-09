@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using dsr_betalling.Handler;
 using dsr_betalling.Common;
 using dsr_betalling.Annotations;
 using dsr_betalling.Model;
-using dsr_betalling.ViewModel;
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Global
+// ReSharper disable UnusedAutoPropertyAccessor.Local
 
 namespace dsr_betalling.ViewModel
 {
-    class vmSale : INotifyPropertyChanged
+    public class vmSale : INotifyPropertyChanged
     {
         private ObservableCollection<Product> _productList;
         private ObservableCollection<PurchaseItem> _purchaseItemObservableCollection;
@@ -95,11 +92,15 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Gets AccountId from chip. Verifies if account have funds registered. Adds purchase to purchase history
         /// </summary>
-        public void MakePurchase()
+        private async void MakePurchase()
         {
+            var mockPrice = 1f;
             try
             {
-                var result = ChipHandler.GetAccountIdFromChipId(ChipId);
+                var accountId = ChipHandler.GetAccountIdFromChipId(ChipId);
+                var account = AccountHandler.GetAccount(accountId).Result;
+                if (!account.WithdrawFunds(mockPrice)) throw new ArgumentException("Insufficient funds!");
+                await AccountHandler.UpdateAccount(account);
                 //PurchaseHandler.MakePurchase(PurchaseItemsList, ChipId, Discount);   
             }
             catch (Exception ex)
@@ -112,7 +113,7 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Adds a selected item from the ProductsListView to the OrderedListView
         /// </summary>
-        public void MoveItem()
+        private void MoveItem()
         {
             try
             {

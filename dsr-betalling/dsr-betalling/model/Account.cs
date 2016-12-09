@@ -6,7 +6,7 @@ namespace dsr_betalling.Model
     {
         public int Id { get; }
         public string AccountHolderName { get; set; }
-        public float Balance { get; private set; }
+        private float Balance { get; set; }
         public string ResourceUri { get; }
         public string VerboseName { get; }
 

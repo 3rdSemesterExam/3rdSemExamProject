@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using dsr_betalling.Common;
 using dsr_betalling.Model;
@@ -14,7 +15,8 @@ namespace dsr_betalling.Handler
         /// <returns>Account Object</returns>
         public static async Task<Account> GetAccount(int accountId) // Er blevet lavet til Static
         {
-            return await Facade.GetAsync(new Account(), accountId);
+            var accountList = await GetAccountList();
+            return accountList.FirstOrDefault(account => account.Id == accountId);
         }
 
         /// <summary>

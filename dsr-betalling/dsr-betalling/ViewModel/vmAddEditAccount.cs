@@ -1,84 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using dsr_betalling.Annotations;
 using dsr_betalling.Common;
 using dsr_betalling.Handler;
 using dsr_betalling.Model;
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 namespace dsr_betalling.ViewModel
 {
     public class vmAddEditAccount : INotifyPropertyChanged
     {
-        private bool _loadingIcon;
-        private float _balance;
-        private float _funds;
-        private string _chipId;
         private string _accountHolderFirstName;
+        private float _balance;
+        private string _chipId;
         private ObservableCollection<Chip> _chipObservableCollection;
+        private float _funds;
+        private bool _loadingIcon;
         private ObservableCollection<Purchase> _orderHistoryObservableCollection;
 
-        public ObservableCollection<Purchase> OrderHistoryObservableCollection
+        public vmAddEditAccount(int accountId, int fkAccount, int selectedIndex) : this ()
         {
-            get { return _orderHistoryObservableCollection; }
-            set { _orderHistoryObservableCollection = value; OnPropertyChanged(); }
-        }
-
-        public ObservableCollection<Chip> ChipObservableCollection
-        {
-            get { return _chipObservableCollection; }
-            set { _chipObservableCollection = value; OnPropertyChanged(); }
-        }
-
-        public string AccountHolderName
-        {
-            get { return _accountHolderFirstName; }
-            set { _accountHolderFirstName = value; OnPropertyChanged();}
-        }
-
-        public string ChipId
-        {
-            get { return _chipId; }
-            set{ _chipId = value; OnPropertyChanged(); }
-        }
-
-        public float Balance
-        {
-            get { return _balance; }
-            set { _balance = value; OnPropertyChanged(); }
-        }
-
-        public float Funds
-        {
-            get { return _funds; }
-            set { _funds = value; OnPropertyChanged(); }
-        }
-
-        public bool LoadingIcon
-        {
-            get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
-        }
-        private int Fk_Account { get; set; }
-        public int SelectedIndex { get; set; }
-        private int Id { get; set; }
-
-        public ICommand AddAccountCommand { get; set; }
-        public ICommand UpdateAccountCommand { get; set; }
-        public ICommand AddChipCommand { get; set; }
-        public ICommand DeleteChipCommand { get; set; }
-        public ICommand AddFundsCommand { get; set; }
-
-        public vmAddEditAccount(int id, int fkAccount)
-        {
-            Id = id;
+            AccountId = accountId;
             Fk_Account = fkAccount;
+            SelectedIndex = selectedIndex;
             ChipObservableCollection = new ObservableCollection<Chip>();
             OrderHistoryObservableCollection = new ObservableCollection<Purchase>();
             PopulateChip(); //Populate is only for EditAccount
@@ -96,16 +43,71 @@ namespace dsr_betalling.ViewModel
             
         }
 
-        public void AddFunds(float funds)
+        public ObservableCollection<Purchase> OrderHistoryObservableCollection
         {
+            get { return _orderHistoryObservableCollection; }
+            set { _orderHistoryObservableCollection = value; OnPropertyChanged(); }
+        }
+
+        public ObservableCollection<Chip> ChipObservableCollection
+        {
+            get { return _chipObservableCollection; }
+            set { _chipObservableCollection = value; OnPropertyChanged(); }
+        }
+
+        private string AccountHolderName
+        {
+            get { return _accountHolderFirstName; }
+            set { _accountHolderFirstName = value; OnPropertyChanged(); }
+        }
+
+        private string ChipId
+        {
+            get { return _chipId; }
+            set { _chipId = value; OnPropertyChanged(); }
+        }
+
+        private float Balance
+        {
+            get { return _balance; }
+            set { _balance = value; OnPropertyChanged(); }
+        }
+
+        private float Funds
+        {
+            get { return _funds; }
+            set { _funds = value; OnPropertyChanged(); }
+        }
+
+        private bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set { _loadingIcon = value; OnPropertyChanged(); }
+        }
+
+        private int Fk_Account { get; }
+        public int SelectedIndex { get; }
+        private int AccountId { get; }
+
+        public ICommand AddAccountCommand { get; set; }
+        public ICommand UpdateAccountCommand { get; set; }
+        public ICommand AddChipCommand { get; set; }
+        public ICommand DeleteChipCommand { get; set; }
+        public ICommand AddFundsCommand { get; set; }
+
+        public bool AddFunds(float funds)
+        {
+            var account = AccountHandler.GetAccount(AccountId).Result;
+            account.AddFunds(funds);
+            return AccountHandler.UpdateAccount(account).Result;
             // point to handler which have the add funds method.
         }
 
-        public void AddAccount()
+        private void AddAccount()
         {
             try
             {
-                var result = AccountHandler.CreateAccount(new Account(Id, AccountHolderName, Balance)).Result;
+                var result = AccountHandler.CreateAccount(new Account(AccountId, AccountHolderName, Balance)).Result;
                 if (!result) throw new ArgumentException("Error creating new account.");
             }
             catch (Exception ex)
@@ -115,13 +117,13 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Receives data from user and sends it to UpdateAccount.
+        ///     Receives data from user and sends it to UpdateAccount.
         /// </summary>
-        public void EditAccount()
+        private void EditAccount()
         {
             try
             {
-                var result = AccountHandler.UpdateAccount(new Account(Id, AccountHolderName, Balance)).Result;
+                var result = AccountHandler.UpdateAccount(new Account(AccountId, AccountHolderName, Balance)).Result;
                 if (!result) throw new ArgumentException("Error updating account");
             }
             catch (Exception ex)
@@ -131,14 +133,14 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Receives data from user and sends it to AddChipToAccountAsync
+        ///     Receives data from user and sends it to AddChipToAccountAsync
         /// </summary>
-        public void AddChip()
+        private void AddChip()
         {
             try
             {
-                var result = ChipHandler.AddChipToAccountAsync(ChipId, Fk_Account).Result;
-                if (result) ChipObservableCollection.Add(new Chip(ChipId, Fk_Account));
+                var result = ChipHandler.AddChipToAccountAsync(ChipId, AccountId).Result;
+                if (result) ChipObservableCollection.Add(new Chip(ChipId, AccountId));
             }
             catch (Exception ex)
             {
@@ -147,20 +149,18 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Sends a ChipId for the ChipHandler to delete.
+        ///     Sends a ChipId for the ChipHandler to delete.
         /// </summary>
-        public async void DeleteChip()
+        private async void DeleteChip()
         {
             try
             {
-                var result =  await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
-                if (result)
-                {
-                    if (SelectedIndex > -1)
-                        ChipObservableCollection.RemoveAt(SelectedIndex);
-                    else
-                        throw new ArgumentException("Failed deleting a chip.");
-                }
+                var result = await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
+                if (!result) return;
+                if (SelectedIndex > -1)
+                    ChipObservableCollection.RemoveAt(SelectedIndex);
+                else
+                    throw new ArgumentException("Failed deleting a chip.");
             }
             catch (Exception ex)
             {
@@ -169,7 +169,7 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Populates a list when page in loaded.
+        ///     Populates a list when page in loaded.
         /// </summary>
         private async void PopulateChip()
         {
@@ -178,9 +178,7 @@ namespace dsr_betalling.ViewModel
                 LoadingIcon = true;
                 var listOfChips = await ChipHandler.GetChipList();
                 foreach (var chip in listOfChips)
-                {
                     ChipObservableCollection.Add(chip);
-                }
             }
             catch (Exception ex)
             {
@@ -191,7 +189,9 @@ namespace dsr_betalling.ViewModel
                 LoadingIcon = false;
             }
         }
+
         #region NotifyPropertyChangedSupport
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -199,6 +199,7 @@ namespace dsr_betalling.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }

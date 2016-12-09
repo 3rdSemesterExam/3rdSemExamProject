@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using dsr_betalling.Annotations;
 using dsr_betalling.Common;
@@ -16,34 +12,9 @@ namespace dsr_betalling.ViewModel
 {
     public class vmAccount : INotifyPropertyChanged
     {
-
         private ObservableCollection<Account> _accountObservableCollection;
         private bool _loadingIcon;
         private ObservableCollection<Account> _registeredAccountsCollection;
-
-
-        public ObservableCollection<Account> RegisteredAccountsCollection
-        {
-            get { return _registeredAccountsCollection; }
-            set { _registeredAccountsCollection = value; }
-        }
-
-        public ObservableCollection<Account> AccountObservableCollection
-        {
-            get { return _accountObservableCollection; }
-            set { _accountObservableCollection = value; OnPropertyChanged(); }
-        }
-
-        public bool LoadingIcon
-        {
-            get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
-        }
-
-        public int SelectedIndex { get; set; }
-        public int AccountId { get; set; }
-
-        public ICommand DeleteAccountCommand { get; set; }
 
         public vmAccount()
         {
@@ -54,10 +25,46 @@ namespace dsr_betalling.ViewModel
             DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
 
+
+        public ObservableCollection<Account> RegisteredAccountsCollection
+        {
+            get { return _registeredAccountsCollection; }
+            set
+            {
+                _registeredAccountsCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Account> AccountObservableCollection
+        {
+            get { return _accountObservableCollection; }
+            set
+            {
+                _accountObservableCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set
+            {
+                _loadingIcon = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int SelectedIndex { get; set; }
+        public int AccountId { get; set; }
+
+        public ICommand DeleteAccountCommand { get; set; }
+
         /// <summary>
-        /// The last line in this method might get some serious refactoring
+        ///     The last line in this method might get some serious refactoring
         /// </summary>
-        public void RemoveAccount()
+        private void RemoveAccount()
         {
             try
             {
@@ -79,7 +86,7 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Populates a list when page in loaded.
+        ///     Populates a list when page in loaded.
         /// </summary>
         private async void Populate()
         {
@@ -88,9 +95,7 @@ namespace dsr_betalling.ViewModel
                 LoadingIcon = true;
                 var listOfAccounts = await AccountHandler.GetAccountList();
                 foreach (var account in listOfAccounts)
-                {
                     AccountObservableCollection.Add(account);
-                }
             }
             catch (Exception ex)
             {
@@ -103,6 +108,7 @@ namespace dsr_betalling.ViewModel
         }
 
         #region MyRegion
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -110,6 +116,7 @@ namespace dsr_betalling.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }
