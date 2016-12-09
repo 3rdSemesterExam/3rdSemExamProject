@@ -41,7 +41,7 @@ namespace dsr_betalling.ViewModel
         }
 
         public float Discount { get; set; }
-        public string ChipId { get; set; }
+        private string ChipId { get; set; }
         public int SelectedIndex { get; set; }
 
         public bool LoadingIcon
