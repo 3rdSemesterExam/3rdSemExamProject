@@ -31,11 +31,11 @@ namespace dsr_betalling.view
 
         private void LogInButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var vievmodel = (vmAccess)DataContext;
-            if (vievmodel.LoginCommand.CanExecute(null))
-                vievmodel.LoginCommand.Execute(null);
-            NavigationHelper.Navigate(typeof(Sale));
-            
+            //var vievmodel = (vmAccess) DataContext;
+            //if (vievmodel.LoginCommand.CanExecute(null))
+            //    vievmodel.LoginCommand.Execute(null);
+            //NavigationHelper.Navigate(typeof(Sale));
         }
     }
 }
+

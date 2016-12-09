@@ -83,7 +83,7 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Populates a list when page in loaded.
         /// </summary>
-        private async void PopulateListOfProducts()
+        private void PopulateListOfProducts()
         {
             try
             {
@@ -105,7 +105,7 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        private async void PopulateListOfPurchases()
+        private void PopulateListOfPurchases()
         {
             try
             {
@@ -127,7 +127,7 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        public async void MakePurchase()
+        public void MakePurchase()
         {
             try
             {
@@ -136,8 +136,7 @@ namespace dsr_betalling.ViewModel
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
-                
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message); 
             }
         }
 
