@@ -2,14 +2,13 @@
 
 namespace dsr_betalling.exception
 {
-    class HttpErrorException : Exception
+    internal class HttpErrorException : Exception
     {
         /// <summary>
-        /// Gør så man kan lave en custom Exception, med http exceptions
+        /// Enables a Custom Exception to handle HTTP errors in the Facade
         /// </summary>
-        public HttpErrorException()
-        {}
+        public HttpErrorException() { }
 
-        public HttpErrorException(string message) : base(message){}
+        public HttpErrorException(string message) : base(message) { }
     }
 }

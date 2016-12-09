@@ -8,8 +8,10 @@ namespace dsr_betalling.Common
     class NavigationHelper
     {
         /// <summary>
-        /// Denne klasse gør at man kan navigaere fra C# koden i stedet for Xaml koden
+        /// This class facilitates the navigation in the UI from the code
         /// </summary>
+        
+        
         private static Frame _frame;
 
         public static void Navigate(Type page)

@@ -9,6 +9,13 @@ namespace dsr_betalling.Handler
 {
     public class PurchaseHandler
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PurchaseItems"></param>
+        /// <param name="ChipId"></param>
+        /// <param name="Discount"></param>
+        /// <returns></returns>
         public async Task<bool> MakePurchase(List<PurchaseItem> PurchaseItems, string ChipId, float Discount)
         {
             var result = true;

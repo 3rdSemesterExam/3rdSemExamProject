@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using dsr_betalling.Common;
 
 namespace dsr_betalling.Handler
 {
-    public class AuthorizationHandler
+    public static class AuthorizationHandler
     {
+        /// <summary>
+        /// Performs a basic Login check
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public static async Task<bool> DoLogin(string username, string password)
         {
             var result = await Facade.DoLoginAsync(username, password);
@@ -18,6 +20,10 @@ namespace dsr_betalling.Handler
             return true;
         }
 
+        /// <summary>
+        /// Performs a Logout, clearing the necesary variables
+        /// </summary>
+        /// <returns></returns>
         public static bool DoLogout()
         {
             var result = Facade.DoLogout();

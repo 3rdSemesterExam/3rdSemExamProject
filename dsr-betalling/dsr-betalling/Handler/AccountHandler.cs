@@ -47,6 +47,10 @@ namespace dsr_betalling.Handler
             return await Facade.DeleteAsync(new Account(), accountId);
         }
 
+        /// <summary>
+        /// Gets a List of Account
+        /// </summary>
+        /// <returns></returns>
         public static async Task<IEnumerable<Account>> GetAccountList()
         {
             return await Facade.GetListAsync(new Account());
