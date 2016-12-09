@@ -117,13 +117,9 @@ namespace dsr_betalling.ViewModel
             try
             {
                 if (SelectedIndex > -1)
-                {
                     ProductList.Add(new Product());
-                }
                 else
-                {
                     throw new ArgumentException("Failed moving item.");
-                }
             }
             catch (Exception ex)
             {
