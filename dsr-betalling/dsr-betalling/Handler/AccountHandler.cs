@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using dsr_betalling.Common;
 using dsr_betalling.Model;
 
@@ -44,6 +45,11 @@ namespace dsr_betalling.Handler
         public static async Task<bool> DeleteAccount(int accountId)
         {
             return await Facade.DeleteAsync(new Account(), accountId);
+        }
+
+        public static async Task<IEnumerable<Account>> GetAccountList()
+        {
+            return await Facade.GetListAsync(new Account());
         }
     }
 }

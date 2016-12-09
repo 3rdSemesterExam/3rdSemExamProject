@@ -12,16 +12,18 @@ namespace dsr_betalling.Handler
         public static async Task<bool> DoLogin(string username, string password)
         {
             var result = await Facade.DoLoginAsync(username, password);
+            if (!result) return false;
             Authorization.UpdateUserList();
             Authorization.SetUserId(username);
-            return result;
+            return true;
         }
 
         public static bool DoLogout()
         {
             var result = Facade.DoLogout();
+            if (!result) return false;
             Authorization.Clear();
-            return result;
+            return true;
         }
     }
 }
