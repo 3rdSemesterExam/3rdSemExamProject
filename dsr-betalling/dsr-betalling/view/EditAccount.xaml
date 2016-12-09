@@ -57,7 +57,7 @@
         <StackPanel x:Name="BalanceStack" Orientation="Vertical" Width="300" Height="300" Margin="850,0,0,120">
             <TextBlock x:Name="BalanceBlock" TextWrapping="Wrap" Text="Current Balance" Height="50" FontSize="36" Margin="0,1,0,0"/>
 
-            <TextBlock x:Name="CurrentBalanceBlock" TextWrapping="Wrap" Text="TextBlock" Margin="0,10,9,0" d:LayoutOverrides="Width, TopPosition, BottomPosition" Height="50" FontSize="36"/>
+            <TextBlock x:Name="CurrentBalanceBlock" TextWrapping="Wrap" Text="nn.nn" Margin="0,10,9,0" d:LayoutOverrides="Width, TopPosition, BottomPosition" Height="50" FontSize="36"/>
             <TextBlock x:Name="AddFundBlock" TextWrapping="Wrap" Text="Add funds" Height="50" FontSize="36" Margin="0,10,0,0"/>
             <Button x:Name="AddFundsButton" Content="Add funds" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,10,6,0" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="56" FontSize="36">
                 <Interactivity:Interaction.Behaviors>
