@@ -86,8 +86,7 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                //var listOfAccounts = await Facade.GetListAsync(new Account());
-                var listOfAccounts = await AccountHandler.GetAccountList(new Account(a));
+                var listOfAccounts = await AccountHandler.GetAccountList();
                 foreach (var account in listOfAccounts)
                 {
                     AccountObservableCollection.Add(account);
