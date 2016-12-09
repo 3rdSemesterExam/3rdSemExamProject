@@ -88,8 +88,8 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                //var listOfProducts = await Facade.GetListAsync(new Product());
-                var listOfProducts = ProductList;
+                var listOfProducts = await Facade.GetListAsync(new Product());
+                //var listOfProducts = ProductList;
                 foreach (var product in listOfProducts)
                 {
                     ProductList.Add(product);
@@ -105,14 +105,14 @@ namespace dsr_betalling.ViewModel
             }
         }
 
-        private void PopulateListOfPurchases()
+        private async void PopulateListOfPurchases()
         {
             try
             {
                 LoadingIcon = true;
-                //var listOfProducts = await Facade.GetListAsync(new Product());
-                var listOfPurchases = PurchaseItemObservableCollection;
-                foreach (var product in listOfPurchases)
+                var listOfPurchaseItems = await Facade.GetListAsync(new PurchaseItem());
+                //var listOfPurchases = PurchaseItemObservableCollection;
+                foreach (var product in listOfPurchaseItems)
                 {
                     //PurchaseItem.Add(product);
                 }
