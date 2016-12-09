@@ -59,13 +59,7 @@
 
             <TextBlock x:Name="CurrentBalanceBlock" TextWrapping="Wrap" Text="nn.nn" Margin="0,10,9,0" d:LayoutOverrides="Width, TopPosition, BottomPosition" Height="50" FontSize="36"/>
             <TextBlock x:Name="AddFundBlock" TextWrapping="Wrap" Text="Add funds" Height="50" FontSize="36" Margin="0,10,0,0"/>
-            <Button x:Name="AddFundsButton" Content="Add funds" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,10,6,0" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="56" FontSize="36">
-                <Interactivity:Interaction.Behaviors>
-                    <Core:EventTriggerBehavior EventName="Click">
-                        <Core:CallMethodAction TargetObject="{Binding AddFundsCommand}"/>
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </Button>
+            <Button x:Name="AddFundsButton" Content="Add funds" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,10,6,0" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="56" FontSize="36"/>
             <TextBox x:Name="AddFundsTextBox" TextWrapping="Wrap" Text="" d:LayoutOverrides="Width, LeftPosition, RightPosition" Height="50" FontSize="36" Margin="0,10,0,0" PlaceholderText="Dkk"/>
 
         </StackPanel>
