@@ -17,21 +17,13 @@ namespace dsr_betalling.ViewModel
         public string Username
         {
             get { return _username; }
-            set
-            {
-                _username = value;
-                OnPropertyChanged();
-            }
+            set { _username = value; OnPropertyChanged(); }
         }
 
         public string Password
         {
             get { return _password; }
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
+            set { _password = value; OnPropertyChanged(); }
         }
 
         public vmAccess()
@@ -39,23 +31,22 @@ namespace dsr_betalling.ViewModel
             LoginCommand = new RelayCommand(DsrLogin);
         }
 
+        /// <summary>
+        /// Sends Username and Password to AuthorizationHandler.
+        /// </summary>
         public async void DsrLogin()
         {
             try
             {
                 var result = await AuthorizationHandler.DoLogin(Username, Password);
                 if (!result)
-                {
                     throw new ArgumentException("Failed to log in");
-                }
             }
             catch (Exception ex)
             {
                 ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
-
-
         #region MyRegion
         public event PropertyChangedEventHandler PropertyChanged;
 
