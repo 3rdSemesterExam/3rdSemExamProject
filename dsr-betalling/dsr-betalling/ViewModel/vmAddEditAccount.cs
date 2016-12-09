@@ -119,12 +119,12 @@ namespace dsr_betalling.ViewModel
             //AddFundsCommand = new RelayCommand(AddFunds());
 
             //MOCK OBJECTS
-            OrderHistoryObservableCollection.Add(new Purchase(1, 1, 500, DateTime.Now));
-            OrderHistoryObservableCollection.Add(new Purchase(2, 1, 20, DateTime.Now));
+            //OrderHistoryObservableCollection.Add(new Purchase(1, 1, 500, DateTime.Now));
+            //OrderHistoryObservableCollection.Add(new Purchase(2, 1, 20, DateTime.Now));
 
-            ChipObservableCollection.Add(new Chip());
-            ChipObservableCollection.Add(new Chip());
-            ChipObservableCollection.Add(new Chip());
+            //ChipObservableCollection.Add(new Chip());
+            //ChipObservableCollection.Add(new Chip());
+            //ChipObservableCollection.Add(new Chip());
         }
 
         public void AddFunds(float funds)
@@ -209,8 +209,8 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                //var listOfChips = await Facade.GetListAsync(new Chip());
-                var listOfChips = ChipObservableCollection;
+                var listOfChips = await Facade.GetListAsync(new Chip());
+                //var listOfChips = ChipObservableCollection;
                 foreach (var chip in listOfChips)
                 {
                     ChipObservableCollection.Add(chip);
