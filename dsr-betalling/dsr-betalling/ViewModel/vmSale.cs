@@ -110,7 +110,7 @@ namespace dsr_betalling.ViewModel
 
         //Will not work as intended
         /// <summary>
-        /// Adds a selected item from the ProductsList to the OrderedList
+        /// Adds a selected item from the ProductsListView to the OrderedListView
         /// </summary>
         public void MoveItem()
         {
