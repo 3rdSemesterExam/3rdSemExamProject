@@ -31,21 +31,13 @@ namespace dsr_betalling.ViewModel
         public ObservableCollection<Account> AccountObservableCollection
         {
             get { return _accountObservableCollection; }
-            set
-            {
-                _accountObservableCollection = value;
-                OnPropertyChanged();
-            }
+            set { _accountObservableCollection = value; OnPropertyChanged(); }
         }
 
         public bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set
-            {
-                _loadingIcon = value;
-                OnPropertyChanged();
-            }
+            set { _loadingIcon = value; OnPropertyChanged(); }
         }
 
         public int SelectedIndex { get; set; }
@@ -58,15 +50,6 @@ namespace dsr_betalling.ViewModel
             RegisteredAccountsCollection = new ObservableCollection<Account>();
             AccountObservableCollection = new ObservableCollection<Account>();
             Populate();
-
-            RegisteredAccountsCollection.Add(new Account());
-            RegisteredAccountsCollection.Add(new Account());
-            RegisteredAccountsCollection.Add(new Account());
-            RegisteredAccountsCollection.Add(new Account());
-
-            AccountObservableCollection.Add(new Account());
-            AccountObservableCollection.Add(new Account());
-            AccountObservableCollection.Add(new Account());
 
             DeleteAccountCommand = new RelayCommand(RemoveAccount);
         }
@@ -98,13 +81,13 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Populates a list when page in loaded.
         /// </summary>
-        private void Populate()
+        private async void Populate()
         {
             try
             {
                 LoadingIcon = true;
                 //var listOfAccounts = await Facade.GetListAsync(new Account());
-                var listOfAccounts = AccountObservableCollection;
+                var listOfAccounts = await AccountHandler.GetAccountList(new Account(a));
                 foreach (var account in listOfAccounts)
                 {
                     AccountObservableCollection.Add(account);
