@@ -176,8 +176,7 @@ namespace dsr_betalling.ViewModel
             try
             {
                 LoadingIcon = true;
-                var listOfChips = await Facade.GetListAsync(new Chip());
-                //var listOfChips = ChipObservableCollection;
+                var listOfChips = await ChipHandler.GetChipList();
                 foreach (var chip in listOfChips)
                 {
                     ChipObservableCollection.Add(chip);
