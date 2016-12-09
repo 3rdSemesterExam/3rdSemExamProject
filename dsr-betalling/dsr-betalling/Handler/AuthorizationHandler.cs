@@ -9,9 +9,9 @@ namespace dsr_betalling.Handler
 {
     public class AuthorizationHandler
     {
-        public static bool DoLogin(string username, string password)
+        public static async Task<bool> DoLogin(string username, string password)
         {
-            var result = Facade.DoLoginAsync(username, password).Result;
+            var result = await Facade.DoLoginAsync(username, password);
             Authorization.UpdateUserList();
             Authorization.SetUserId(username);
             return result;

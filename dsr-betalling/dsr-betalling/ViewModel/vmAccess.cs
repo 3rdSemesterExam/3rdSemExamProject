@@ -39,11 +39,11 @@ namespace dsr_betalling.ViewModel
             LoginCommand = new RelayCommand(DsrLogin);
         }
 
-        public void DsrLogin()
+        public async void DsrLogin()
         {
             try
             {
-                var result = AuthorizationHandler.DoLogin(Username, Password);
+                var result = await AuthorizationHandler.DoLogin(Username, Password);
                 if (!result)
                 {
                     throw new ArgumentException("Failed to log in");
