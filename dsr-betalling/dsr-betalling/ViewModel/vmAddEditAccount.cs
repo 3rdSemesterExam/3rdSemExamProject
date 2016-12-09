@@ -149,11 +149,11 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Sends a ChipId for the ChipHandler to delete.
         /// </summary>
-        public void DeleteChip()
+        public async void DeleteChip()
         {
             try
             {
-                var result = ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId)).Result;
+                var result =  await ChipHandler.DeleteChipFromAccountAsync(SelectedIndex.ToString(ChipId));
                 if (result)
                 {
                     if (SelectedIndex > -1)
