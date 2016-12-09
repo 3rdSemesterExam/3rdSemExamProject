@@ -83,7 +83,7 @@ namespace dsr_betalling.ViewModel
         /// <summary>
         /// Populates a list when page in loaded.
         /// </summary>
-        private void PopulateListOfProducts()
+        private async void PopulateListOfProducts()
         {
             try
             {
