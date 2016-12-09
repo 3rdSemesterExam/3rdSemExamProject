@@ -34,7 +34,7 @@ namespace dsr_betalling.view
             //var vievmodel = (vmAccess) DataContext;
             //if (vievmodel.LoginCommand.CanExecute(null))
             //    vievmodel.LoginCommand.Execute(null);
-            //NavigationHelper.Navigate(typeof(Sale));
+            NavigationHelper.Navigate(typeof(Sale));
         }
     }
 }
