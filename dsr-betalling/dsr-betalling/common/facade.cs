@@ -20,7 +20,7 @@ namespace dsr_betalling.Common
         private static string _token;
 
         /// <summary>
-        /// 
+        /// Get a List of Objects from the Webservice
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -53,7 +53,7 @@ namespace dsr_betalling.Common
         }
 
         /// <summary>
-        /// 
+        /// Gets and Object from the Webservice, by Id
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
@@ -120,6 +120,12 @@ namespace dsr_betalling.Common
             }
         }
 
+        /// <summary>
+        /// Post an object to the Webservice, Serialized as JSON, and returns the Id of the newly created Object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static async Task<string> PostScalarAsync<T>(T obj) where T : IWebUri
         {
             if (IsNullOrEmpty(_token)) return "-1";
@@ -329,6 +335,10 @@ namespace dsr_betalling.Common
             }
         }
 
+        /// <summary>
+        /// Logs out the user (Destroys the token in the Facade)
+        /// </summary>
+        /// <returns></returns>
         public static bool DoLogout()
         {
             if (IsNullOrEmpty(_token)) return false;

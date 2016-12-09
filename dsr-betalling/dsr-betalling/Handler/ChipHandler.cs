@@ -15,7 +15,7 @@ namespace dsr_betalling.Handler
 
         private static async void UpdateChipList()
         {
-            chipList = await Facade.GetListAsync(new Chip());
+            chipList = await GetChipList();
         }
 
         public static async Task<bool> AddChipToAccountAsync(string chipId, int accountId)
@@ -40,6 +40,11 @@ namespace dsr_betalling.Handler
         {
             UpdateChipList();
             return chipList.FirstOrDefault(chip => chip.ChipId == chipId);
+        }
+
+        public static async Task<IEnumerable<Chip>> GetChipList()
+        {
+            return await Facade.GetListAsync(new Chip());
         }
     }
 }
