@@ -91,6 +91,11 @@ namespace dsr_betalling.ViewModel
             //AddFundsCommand = new RelayCommand(AddFunds());
         }
 
+        public vmAddEditAccount()
+        {
+            
+        }
+
         public void AddFunds(float funds)
         {
             // point to handler which have the add funds method.
