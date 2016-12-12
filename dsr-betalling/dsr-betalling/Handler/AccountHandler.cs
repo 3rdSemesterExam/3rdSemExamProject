@@ -6,21 +6,21 @@ using dsr_betalling.Model;
 
 namespace dsr_betalling.Handler
 {
-    public class AccountHandler
+    public static class AccountHandler
     {
         /// <summary>
-        /// Fetches an Account
+        ///     Fetches an Account
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Account Object</returns>
-        public static async Task<Account> GetAccount(int accountId) // Er blevet lavet til Static
+        public static async Task<Account> GetAccount(int accountId)
         {
             var accountList = await GetAccountList();
             return accountList.FirstOrDefault(account => account.Id == accountId);
         }
 
         /// <summary>
-        /// Creates an Account
+        ///     Creates an Account
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
@@ -30,17 +30,17 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Updates an Account
+        ///     Updates an Account
         /// </summary>
         /// <param name="account">Account Object</param>
         /// <returns>Boolean</returns>
-        public static async Task<bool> UpdateAccount(Account account) // Er blevet lavet til static
+        public static async Task<bool> UpdateAccount(Account account)
         {
             return await Facade.PutAsync(account, account.Id);
         }
 
         /// <summary>
-        /// Deletes an Account
+        ///     Deletes an Account
         /// </summary>
         /// <param name="accountId">Account Id</param>
         /// <returns>Boolean</returns>
@@ -50,12 +50,22 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Gets a List of Account
+        ///     Gets a List of Account
         /// </summary>
         /// <returns></returns>
         public static async Task<IEnumerable<Account>> GetAccountList()
         {
             return await Facade.GetListAsync(new Account());
+        }
+
+        /// <summary>
+        ///     Gets a List of Purchases, by Account Id
+        /// </summary>
+        /// <param name="AccountId"></param>
+        /// <returns></returns>
+        public static async Task<IEnumerable<Purchase>> GetPurchaseHistory(int AccountId)
+        {
+            return await Facade.GetListByAccountIdAsync(new Purchase(), AccountId);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace dsr_betalling.ViewModel
                 OnPropertyChanged();
             }
         }
-        
+
         /// <summary>
         ///     Sends Username and Password to AuthorizationHandler.
         /// </summary>

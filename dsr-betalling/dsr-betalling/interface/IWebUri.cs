@@ -3,12 +3,12 @@
     public interface IWebUri
     {
         /// <summary>
-        /// Uri for Webservice
+        ///     Uri for Webservice
         /// </summary>
         string ResourceUri { get; }
 
         /// <summary>
-        /// Reading friendly name
+        ///     Reading friendly name
         /// </summary>
         string VerboseName { get; }
     }

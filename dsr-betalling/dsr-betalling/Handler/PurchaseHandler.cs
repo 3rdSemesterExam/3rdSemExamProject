@@ -10,7 +10,7 @@ namespace dsr_betalling.Handler
     public class PurchaseHandler
     {
         /// <summary>
-        /// 
+        ///     Makes a full Purchase
         /// </summary>
         /// <param name="PurchaseItems"></param>
         /// <param name="ChipId"></param>
@@ -21,11 +21,14 @@ namespace dsr_betalling.Handler
             var result = true;
 
             // Gather Info
-            var totalPrice = PurchaseItems.Sum(purchaseItem => purchaseItem.Amount * purchaseItem.Price) - Discount;
+            var totalPrice = PurchaseItems.Sum(purchaseItem => purchaseItem.Amount*purchaseItem.Price) - Discount;
             var Account = AccountHandler.GetAccount(ChipHandler.GetAccountIdFromChipId(ChipId)).Result;
-            
+
             // Post Purchase
-            var PurchaseId = int.Parse(await Facade.PostScalarAsync(new Purchase(Account.Id, Authorization.UserId, totalPrice, DateTime.Now)));
+            var PurchaseId =
+                int.Parse(
+                    await
+                        Facade.PostScalarAsync(new Purchase(Account.Id, Authorization.UserId, totalPrice, DateTime.Now)));
 
             // Post PurchaseItems
             foreach (var purchaseItem in PurchaseItems)
@@ -43,6 +46,32 @@ namespace dsr_betalling.Handler
             result = await AccountHandler.UpdateAccount(Account);
 
             return result;
+        }
+
+        /// <summary>
+        ///     Adds Funds to an Account, by Account Id
+        /// </summary>
+        /// <param name="AccountId"></param>
+        /// <param name="Amount"></param>
+        /// <returns></returns>
+        public async Task<bool> AddFunds(int AccountId, float Amount)
+        {
+            var account = AccountHandler.GetAccount(AccountId).Result;
+            account.AddFunds(Amount);
+            return await AccountHandler.UpdateAccount(account);
+        }
+
+        /// <summary>
+        ///     Withdraws Funds from an a Account, by Account Id
+        /// </summary>
+        /// <param name="AccountId"></param>
+        /// <param name="Amount"></param>
+        /// <returns></returns>
+        public async Task<bool> WithdrawFunds(int AccountId, float Amount)
+        {
+            var account = AccountHandler.GetAccount(AccountId).Result;
+            var result = account.WithdrawFunds(Amount);
+            return result && await AccountHandler.UpdateAccount(account);
         }
     }
 }

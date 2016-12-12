@@ -9,7 +9,7 @@
     x:Class="dsr_betalling.view.Sale"
     mc:Ignorable="d" FontSize="36">
     <Page.DataContext>
-        <ViewModel:vmSale/>
+        <ViewModel:vmSale />
     </Page.DataContext>
     <!--<Page.TopAppBar>
         <CommandBar Height="45" >
@@ -25,62 +25,102 @@
 
     <Grid Background="#FFE2E2E2">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="613*"/>
-            <ColumnDefinition Width="667*"/>
+            <ColumnDefinition Width="613*" />
+            <ColumnDefinition Width="667*" />
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="426*"/>
-                <ColumnDefinition Width="426*"/>
-                <ColumnDefinition Width="426*"/>
+                <ColumnDefinition Width="426*" />
+                <ColumnDefinition Width="426*" />
+                <ColumnDefinition Width="426*" />
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="SalesStack" Orientation="Vertical" Grid.Column="0" Margin="0">
-                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100" Click="SalesButton_OnClick"/>
+                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0"
+                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0"
+                        Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100"
+                        Click="SalesButton_OnClick" />
             </StackPanel>
             <StackPanel x:Name="AccountManagerStack" Orientation="Vertical" Grid.Column="1" Margin="0">
-                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100" Click="AccountManagerButton_OnClick"/>
+                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black"
+                        BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36"
+                        Padding="0" Margin="0" Height="100" Click="AccountManagerButton_OnClick" />
             </StackPanel>
-            <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0" >
-                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_Click"/>
+            <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0">
+                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0"
+                        Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_Click" />
             </StackPanel>
         </Grid>
-        <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="50,150,242.75,45" Orientation="Vertical" Width="320" Height="525">
-            <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="5,0" DoubleTapped="ProductListView_OnDoubleTapped" Header="Products" ItemsSource="{Binding ProductList}">
-                <ListViewItem Content="ListViewItem"/>
+        <StackPanel x:Name="ProductsStack" Grid.Column="0" Margin="50,150,242.75,45" Orientation="Vertical" Width="320"
+                    Height="525">
+            <ListView x:Name="ProductListView" Width="310" Background="#33000000" Height="525" Margin="5,0"
+                      DoubleTapped="ProductListView_OnDoubleTapped" Header="Products"
+                      ItemsSource="{Binding ProductList}">
+                <ListViewItem Content="ListViewItem" />
             </ListView>
-            <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250" Width="120" IsActive="{Binding LoadingIcon}"/>
+            <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="468,276,443,250"
+                          Width="120" IsActive="{Binding LoadingIcon}" />
         </StackPanel>
-        <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="480,150,480,45" Orientation="Vertical" Width="320" Height="525" Grid.ColumnSpan="2">
-            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="5,0" DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order" ItemsSource="{Binding PurchaseItems}"/>
+        <StackPanel x:Name="OrderedStack" Grid.Column="0" Margin="480,150,480,45" Orientation="Vertical" Width="320"
+                    Height="525" Grid.ColumnSpan="2">
+            <ListView x:Name="OrderedListView" Width="310" Background="#33000000" Height="525" Margin="5,0"
+                      DoubleTapped="OrderedListView_OnDoubleTapped" Header="Order"
+                      ItemsSource="{Binding PurchaseItems}" />
         </StackPanel>
-        <StackPanel x:Name="ControlStack" Margin="217.25,150,50,50" Orientation="Vertical" Width="400" Height="520" Grid.Column="1">
+        <StackPanel x:Name="ControlStack" Margin="217.25,150,50,50" Orientation="Vertical" Width="400" Height="520"
+                    Grid.Column="1">
             <StackPanel x:Name="InfoStack" Margin="0" Orientation="Vertical" Height="350" Width="400">
-                <StackPanel x:Name="SubtotalStack" Orientation="Horizontal" Height="50" d:LayoutOverrides="HorizontalAlignment">
-                    <TextBlock x:Name="SalesPriceBlock" Margin="0" TextWrapping="Wrap" Text="Sub Total" Height="50" Width="200"/>
-                    <TextBox x:Name="SalesPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
+                <StackPanel x:Name="SubtotalStack" Orientation="Horizontal" Height="50"
+                            d:LayoutOverrides="HorizontalAlignment">
+                    <TextBlock x:Name="SalesPriceBlock" Margin="0" TextWrapping="Wrap" Text="Sub Total" Height="50"
+                               Width="200" />
+                    <TextBox x:Name="SalesPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"
+                             PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0"
+                             Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"
+                             IsReadOnly="True" />
                 </StackPanel>
                 <StackPanel x:Name="DiscountStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
-                    <TextBlock x:Name="DiscountBlock" Margin="0" TextWrapping="Wrap" Text="Discount" Height="50" Width="200"/>
-                    <TextBox x:Name="DiscountBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="2" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
+                    <TextBlock x:Name="DiscountBlock" Margin="0" TextWrapping="Wrap" Text="Discount" Height="50"
+                               Width="200" />
+                    <TextBox x:Name="DiscountBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"
+                             PlaceholderText="Dkk." BorderThickness="2" Height="50" MinWidth="7" MinHeight="0"
+                             Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" />
                 </StackPanel>
                 <StackPanel x:Name="TotalStack" Orientation="Horizontal" Width="400" Height="50" Margin="0,20,0,0">
-                    <TextBlock x:Name="TotalPriceBlock" Margin="0" TextWrapping="Wrap" Text="Total" Height="50" Width="200"/>
-                    <TextBox x:Name="TotalPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" IsReadOnly="True"/>
+                    <TextBlock x:Name="TotalPriceBlock" Margin="0" TextWrapping="Wrap" Text="Total" Height="50"
+                               Width="200" />
+                    <TextBox x:Name="TotalPriceBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"
+                             PlaceholderText="Dkk." BorderThickness="0" Height="50" MinWidth="7" MinHeight="0"
+                             Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"
+                             IsReadOnly="True" />
                 </StackPanel>
-                <StackPanel x:Name="ConfirmChipStack" Width="400" Margin="0,102,0,0" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height, LeftPosition, RightPosition" Orientation="Horizontal" Height="42">
-                    <TextBlock x:Name="ConfirmChipBlock" Margin="0" TextWrapping="Wrap" Text="Chip Id" Height="50" Width="200"/>
-                    <TextBox x:Name="ConfirmChipBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"  PlaceholderText="th0m45" BorderThickness="0" Height="50" MinWidth="7" MinHeight="0" Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition"/>
+                <StackPanel x:Name="ConfirmChipStack" Width="400" Margin="0,102,0,0"
+                            d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height, LeftPosition, RightPosition"
+                            Orientation="Horizontal" Height="42">
+                    <TextBlock x:Name="ConfirmChipBlock" Margin="0" TextWrapping="Wrap" Text="Chip Id" Height="50"
+                               Width="200" />
+                    <TextBox x:Name="ConfirmChipBox" Margin="0" TextWrapping="Wrap" Text="" Width="200" FontSize="36"
+                             PlaceholderText="th0m45" BorderThickness="0" Height="50" MinWidth="7" MinHeight="0"
+                             Padding="0" d:LayoutOverrides="LeftMargin, RightMargin, TopPosition, BottomPosition" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="ButtonlStack" Orientation="Vertical" Width="200" Height="175" d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height" Margin="100,0">
-                <Button x:Name="PurchaseButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Purchase" Visibility="Visible" Click="PurchaseButton_Click"/>
-                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click"/>
-                <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_OnClick"/>
+            <StackPanel x:Name="ButtonlStack" Orientation="Vertical" Width="200" Height="175"
+                        d:LayoutOverrides="HorizontalAlignment, VerticalAlignment, Height" Margin="100,0">
+                <Button x:Name="PurchaseButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36"
+                        Content="Purchase" Visibility="Visible" Click="PurchaseButton_Click" />
+                <Button x:Name="ConfirmButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36"
+                        Content="Confirm" Visibility="Collapsed" Click="ConfirmButton_Click" />
+                <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200"
+                        Margin="0,25,0,0" FontSize="36" Click="CancelButton_OnClick" />
             </StackPanel>
         </StackPanel>
 
-        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="580,300" Width="120" IsActive="{Binding LoadingIcon}" Grid.ColumnSpan="2"/>
+        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Height="120" Margin="580,300" Width="120"
+                      IsActive="{Binding LoadingIcon}" Grid.ColumnSpan="2" />
 
     </Grid>
 </Page>

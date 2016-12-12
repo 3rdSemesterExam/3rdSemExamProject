@@ -10,41 +10,59 @@
     mc:Ignorable="d">
 
     <Page.DataContext>
-        <ViewModel:vmAddEditAccount/>
+        <ViewModel:vmAddEditAccount />
     </Page.DataContext>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid x:Name="NavigationGrid" Height="100" Margin="0,0,0,620">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="426*"/>
-                <ColumnDefinition Width="426*"/>
-                <ColumnDefinition Width="426*"/>
+                <ColumnDefinition Width="426*" />
+                <ColumnDefinition Width="426*" />
+                <ColumnDefinition Width="426*" />
             </Grid.ColumnDefinitions>
             <StackPanel x:Name="SalesStack" Orientation="Vertical" Grid.Column="0" Margin="0">
-                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0" Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100" Click="SalesButton_OnClick" />
+                <Button x:Name="SalesButton" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Sales" Margin="0"
+                        VerticalAlignment="Stretch" HorizontalAlignment="Stretch" FontSize="36" Padding="0"
+                        Background="#33000000" d:LayoutOverrides="TopPosition, BottomPosition" Height="100"
+                        Click="SalesButton_OnClick" />
             </StackPanel>
             <StackPanel x:Name="AccountManagerStack" Orientation="Vertical" Grid.Column="1" Margin="0">
-                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36" Padding="0" Margin="0" Height="100" Click="AccountManagerButton_OnClick"/>
+                <Button x:Name="AccountManagerButton" HorizontalAlignment="Stretch" BorderBrush="Black"
+                        BorderThickness="0,0,1,0" VerticalAlignment="Stretch" Content="Account Manager" FontSize="36"
+                        Padding="0" Margin="0" Height="100" Click="AccountManagerButton_OnClick" />
             </StackPanel>
-            <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0" >
-                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0" Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_OnClick" />
+            <StackPanel x:Name="LogOutStack" Orientation="Vertical" Grid.Column="2" Margin="0">
+                <Button x:Name="LogOutButton" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                        BorderBrush="Black" BorderThickness="0,0,1,0" Content="Log Out" FontSize="36" Padding="0"
+                        Margin="0" RenderTransformOrigin="0.65,0.42" Height="100" Click="LogOutButton_OnClick" />
             </StackPanel>
         </Grid>
 
         <StackPanel x:Name="InfomationStack" Margin="0,0,804,225" Orientation="Vertical" Width="376" Height="125">
-            <TextBox x:Name="FornavnBox" Margin="0" TextWrapping="Wrap" Text="" Height="50" Width="376" FontSize="36" Padding="0" PlaceholderText="Fornavn"/>
-            <TextBox x:Name="EfternavnBox" Margin="0,25,0,0" TextWrapping="Wrap" Text="" Height="50" Width="376" FontSize="36" Padding="0" PlaceholderText="Efternavn"/>
+            <TextBox x:Name="FornavnBox" Margin="0" TextWrapping="Wrap" Text="" Height="50" Width="376" FontSize="36"
+                     Padding="0" PlaceholderText="Fornavn" />
+            <TextBox x:Name="EfternavnBox" Margin="0,25,0,0" TextWrapping="Wrap" Text="" Height="50" Width="376"
+                     FontSize="36" Padding="0" PlaceholderText="Efternavn" />
 
         </StackPanel>
-        <StackPanel x:Name="ChipStack" Margin="0,105,0,0" Orientation="Vertical" Height="525" Width="360" d:LayoutOverrides="TopPosition, BottomPosition">
-            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22" d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000" ItemsSource="{Binding ChipObservableCollection}"/>
-            <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0" Click="AddChipButton_Click"/>
-            <Button x:Name="DeleteChipButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200" HorizontalAlignment="Stretch" Margin="0,26,0,0" FontSize="36" Click="DeleteChipButton_Click"/>
+        <StackPanel x:Name="ChipStack" Margin="0,105,0,0" Orientation="Vertical" Height="525" Width="360"
+                    d:LayoutOverrides="TopPosition, BottomPosition">
+            <ListView x:Name="ChipListView" Margin="0" Header="Registered Chips" Width="360" Height="300" FontSize="22"
+                      d:LayoutOverrides="TopPosition, BottomPosition" Background="#33000000"
+                      ItemsSource="{Binding ChipObservableCollection}" />
+            <Button x:Name="AddChipButton" Content="Add" VerticalAlignment="Stretch" Height="75" Width="200"
+                    HorizontalAlignment="Stretch" FontSize="36" Margin="80,50,80,0" Click="AddChipButton_Click" />
+            <Button x:Name="DeleteChipButton" Content="Delete" VerticalAlignment="Stretch" Height="75" Width="200"
+                    HorizontalAlignment="Stretch" Margin="0,26,0,0" FontSize="36" Click="DeleteChipButton_Click" />
         </StackPanel>
         <StackPanel x:Name="ControlStack" Margin="895,500,185,45" Orientation="Vertical" Width="200" Height="175">
-            <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36" Click="ConfirmButton_Click"/>
-            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36" Click="CancelButton_Click"/>
+            <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0" FontSize="36"
+                    Click="ConfirmButton_Click" />
+            <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    RenderTransformOrigin="0.608,2.209" Height="75" Width="200" Margin="0,25,0,0" FontSize="36"
+                    Click="CancelButton_Click" />
         </StackPanel>
 
     </Grid>

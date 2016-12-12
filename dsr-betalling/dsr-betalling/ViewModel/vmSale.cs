@@ -3,10 +3,11 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using dsr_betalling.Handler;
-using dsr_betalling.Common;
 using dsr_betalling.Annotations;
+using dsr_betalling.Common;
+using dsr_betalling.Handler;
 using dsr_betalling.Model;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -15,41 +16,9 @@ namespace dsr_betalling.ViewModel
 {
     public class vmSale : INotifyPropertyChanged
     {
+        private bool _loadingIcon;
         private ObservableCollection<Product> _productList;
         private ObservableCollection<PurchaseItem> _purchaseItemObservableCollection;
-        private bool _loadingIcon;
-
-        /// <summary>
-        /// Is bound to ProductsListView
-        /// </summary>
-        public ObservableCollection<Product> ProductList
-        {
-            get { return _productList; }
-            set { _productList = value; OnPropertyChanged(); }
-        }
-
-        /// <summary>
-        /// Is bound to OrderedListView
-        /// </summary>
-        public ObservableCollection<PurchaseItem> PurchaseItemObservableCollection
-        {
-            get { return _purchaseItemObservableCollection; }
-            set { _purchaseItemObservableCollection = value; OnPropertyChanged(); }
-        }
-
-        public float Discount { get; set; }
-        private string ChipId { get; set; }
-        public int SelectedIndex { get; set; }
-
-        public bool LoadingIcon
-        {
-            get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
-        }
-
-        // PurchaseCommands
-        public ICommand MakePurchaseCommand { get; set; }
-        public ICommand MoveItemCommand { get; set; }
 
         public vmSale()
         {
@@ -65,7 +34,51 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Populates a list when page in loaded.
+        ///     Is bound to ProductsListView
+        /// </summary>
+        public ObservableCollection<Product> ProductList
+        {
+            get { return _productList; }
+            set
+            {
+                _productList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        ///     Is bound to OrderedListView
+        /// </summary>
+        public ObservableCollection<PurchaseItem> PurchaseItemObservableCollection
+        {
+            get { return _purchaseItemObservableCollection; }
+            set
+            {
+                _purchaseItemObservableCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public float Discount { get; set; }
+        private string ChipId { get; set; }
+        public int SelectedIndex { get; set; }
+
+        public bool LoadingIcon
+        {
+            get { return _loadingIcon; }
+            set
+            {
+                _loadingIcon = value;
+                OnPropertyChanged();
+            }
+        }
+
+        // PurchaseCommands
+        public ICommand MakePurchaseCommand { get; set; }
+        public ICommand MoveItemCommand { get; set; }
+
+        /// <summary>
+        ///     Populates a list when page in loaded.
         /// </summary>
         private async void PopulateListOfProducts()
         {
@@ -75,9 +88,7 @@ namespace dsr_betalling.ViewModel
                 var listOfProducts = await Facade.GetListAsync(new Product());
                 //var listOfProducts = ProductList;
                 foreach (var product in listOfProducts)
-                {
                     ProductList.Add(product);
-                }
             }
             catch (Exception ex)
             {
@@ -90,7 +101,7 @@ namespace dsr_betalling.ViewModel
         }
 
         /// <summary>
-        /// Gets AccountId from chip. Verifies if account have funds registered. Adds purchase to purchase history
+        ///     Gets AccountId from chip. Verifies if account have funds registered. Adds purchase to purchase history
         /// </summary>
         private async void MakePurchase()
         {
@@ -105,13 +116,13 @@ namespace dsr_betalling.ViewModel
             }
             catch (Exception ex)
             {
-                ExceptionHandler.ShowExceptionErrorAsync(ex.Message); 
+                ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
 
         //Will not work as intended
         /// <summary>
-        /// Adds a selected item from the ProductsListView to the OrderedListView
+        ///     Adds a selected item from the ProductsListView to the OrderedListView
         /// </summary>
         private void MoveItem()
         {
@@ -127,7 +138,9 @@ namespace dsr_betalling.ViewModel
                 ExceptionHandler.ShowExceptionErrorAsync(ex.Message);
             }
         }
+
         #region PropertyChangedSupport
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
@@ -135,6 +148,7 @@ namespace dsr_betalling.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         #endregion
     }
 }

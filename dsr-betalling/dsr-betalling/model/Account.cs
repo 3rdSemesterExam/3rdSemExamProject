@@ -4,12 +4,6 @@ namespace dsr_betalling.Model
 {
     public class Account : IWebUri
     {
-        public int Id { get; }
-        public string AccountHolderName { get; set; }
-        private float Balance { get; set; }
-        public string ResourceUri { get; }
-        public string VerboseName { get; }
-
         public Account()
         {
             ResourceUri = "Accounts";
@@ -29,20 +23,40 @@ namespace dsr_betalling.Model
             Balance = balance;
         }
 
+        public int Id { get; }
+        public string AccountHolderName { get; set; }
+        private float Balance { get; set; }
+        public string ResourceUri { get; }
+        public string VerboseName { get; }
+
+        /// <summary>
+        ///     Adds Funds to Account
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public bool AddFunds(float amount)
         {
-            if (amount < 0 || amount > 500) return false;
+            if ((amount < 0f) || (amount > 500f)) return false;
             Balance += amount;
             return true;
         }
 
+        /// <summary>
+        ///     Withdraws Funds from Account
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public bool WithdrawFunds(float amount)
         {
-            if (amount > Balance || amount < 0) return false;
+            if ((amount > Balance) || (amount < 0)) return false;
             Balance -= amount;
             return true;
         }
 
+        /// <summary>
+        ///     Gets the current Account Balance
+        /// </summary>
+        /// <returns></returns>
         public float GetAccountBalance()
         {
             return Balance;

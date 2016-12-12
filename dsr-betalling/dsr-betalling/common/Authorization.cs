@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using dsr_betalling.Model;
+
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -15,7 +16,7 @@ namespace dsr_betalling.Common
         public static string Username { get; private set; }
 
         /// <summary>
-        /// Refreshes the UserList
+        ///     Refreshes the UserList
         /// </summary>
         public static async void UpdateUserList()
         {
@@ -23,7 +24,7 @@ namespace dsr_betalling.Common
         }
 
         /// <summary>
-        /// Sets the UserId property, based on Username
+        ///     Sets the UserId property, based on Username
         /// </summary>
         /// <param name="username"></param>
         public static void SetUserId(string username)
@@ -32,7 +33,7 @@ namespace dsr_betalling.Common
         }
 
         /// <summary>
-        /// Sets the Username property, based on the UserId
+        ///     Sets the Username property, based on the UserId
         /// </summary>
         /// <param name="userid"></param>
         public static void SetUsername(int userid)
@@ -41,7 +42,7 @@ namespace dsr_betalling.Common
         }
 
         /// <summary>
-        /// Clears the Class Properties (in connection with a Logout)
+        ///     Clears the Class Properties (in connection with a Logout)
         /// </summary>
         public static void Clear()
         {
@@ -50,7 +51,7 @@ namespace dsr_betalling.Common
         }
 
         /// <summary>
-        /// Gets a List of users from the Webservice
+        ///     Gets a List of users from the Webservice
         /// </summary>
         /// <returns></returns>
         public static async Task<IEnumerable<User>> GetUserList()

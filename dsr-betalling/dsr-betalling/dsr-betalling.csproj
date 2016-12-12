@@ -95,6 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Handler\ActivityHandler.cs" />
+    <Compile Include="Handler\ActivityLogHandler.cs" />
+    <Compile Include="Interface\IGetByAccountId.cs" />
+    <Compile Include="Interface\IGetByActivityId.cs" />
+    <Compile Include="Interface\IGetByUserId.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel\vmAddEditAccount.cs" />
     <Compile Include="view\AccountManager.xaml.cs">

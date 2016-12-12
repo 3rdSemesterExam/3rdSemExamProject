@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dsr_betalling.Common;
 using dsr_betalling.Model;
+
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace dsr_betalling.Handler
@@ -12,7 +13,7 @@ namespace dsr_betalling.Handler
         private static IEnumerable<Chip> chipList;
 
         /// <summary>
-        /// Refreshes the Chip List
+        ///     Refreshes the Chip List
         /// </summary>
         private static async void UpdateChipList()
         {
@@ -20,7 +21,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Associates a chip with an Account
+        ///     Associates a chip with an Account
         /// </summary>
         /// <param name="chipId"></param>
         /// <param name="accountId"></param>
@@ -31,7 +32,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Removes association between chip and account, and removes the chip
+        ///     Removes association between chip and account, and removes the chip
         /// </summary>
         /// <param name="chipId"></param>
         /// <returns></returns>
@@ -43,7 +44,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Gets the Account Id associated with a chip, based on Chip Id
+        ///     Gets the Account Id associated with a chip, based on Chip Id
         /// </summary>
         /// <param name="chipId"></param>
         /// <returns></returns>
@@ -54,7 +55,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Gets a Chip Object from a Chip Id
+        ///     Gets a Chip Object from a Chip Id
         /// </summary>
         /// <param name="chipId"></param>
         /// <returns></returns>
@@ -65,7 +66,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Gets a list of Chips
+        ///     Gets a list of Chips
         /// </summary>
         /// <returns></returns>
         public static async Task<IEnumerable<Chip>> GetChipList()

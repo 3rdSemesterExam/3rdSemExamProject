@@ -7,6 +7,7 @@ using dsr_betalling.Annotations;
 using dsr_betalling.Common;
 using dsr_betalling.Handler;
 using dsr_betalling.Model;
+
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 namespace dsr_betalling.ViewModel
@@ -21,7 +22,7 @@ namespace dsr_betalling.ViewModel
         private bool _loadingIcon;
         private ObservableCollection<Purchase> _orderHistoryObservableCollection;
 
-        public vmAddEditAccount(int accountId, int fkAccount, int selectedIndex) : this ()
+        public vmAddEditAccount(int accountId, int fkAccount, int selectedIndex) : this()
         {
             AccountId = accountId;
             Fk_Account = fkAccount;
@@ -40,49 +41,76 @@ namespace dsr_betalling.ViewModel
 
         public vmAddEditAccount()
         {
-            
         }
 
         public ObservableCollection<Purchase> OrderHistoryObservableCollection
         {
             get { return _orderHistoryObservableCollection; }
-            set { _orderHistoryObservableCollection = value; OnPropertyChanged(); }
+            set
+            {
+                _orderHistoryObservableCollection = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<Chip> ChipObservableCollection
         {
             get { return _chipObservableCollection; }
-            set { _chipObservableCollection = value; OnPropertyChanged(); }
+            set
+            {
+                _chipObservableCollection = value;
+                OnPropertyChanged();
+            }
         }
 
         private string AccountHolderName
         {
             get { return _accountHolderFirstName; }
-            set { _accountHolderFirstName = value; OnPropertyChanged(); }
+            set
+            {
+                _accountHolderFirstName = value;
+                OnPropertyChanged();
+            }
         }
 
         private string ChipId
         {
             get { return _chipId; }
-            set { _chipId = value; OnPropertyChanged(); }
+            set
+            {
+                _chipId = value;
+                OnPropertyChanged();
+            }
         }
 
         private float Balance
         {
             get { return _balance; }
-            set { _balance = value; OnPropertyChanged(); }
+            set
+            {
+                _balance = value;
+                OnPropertyChanged();
+            }
         }
 
         private float Funds
         {
             get { return _funds; }
-            set { _funds = value; OnPropertyChanged(); }
+            set
+            {
+                _funds = value;
+                OnPropertyChanged();
+            }
         }
 
         private bool LoadingIcon
         {
             get { return _loadingIcon; }
-            set { _loadingIcon = value; OnPropertyChanged(); }
+            set
+            {
+                _loadingIcon = value;
+                OnPropertyChanged();
+            }
         }
 
         private int Fk_Account { get; }

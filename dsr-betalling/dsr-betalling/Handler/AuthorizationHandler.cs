@@ -6,7 +6,7 @@ namespace dsr_betalling.Handler
     public static class AuthorizationHandler
     {
         /// <summary>
-        /// Performs a basic Login check
+        ///     Performs a basic Login check
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -21,7 +21,7 @@ namespace dsr_betalling.Handler
         }
 
         /// <summary>
-        /// Performs a Logout, clearing the necesary variables
+        ///     Performs a Logout, clearing the necesary variables
         /// </summary>
         /// <returns></returns>
         public static bool DoLogout()
